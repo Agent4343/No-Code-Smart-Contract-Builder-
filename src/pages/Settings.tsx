@@ -4,7 +4,6 @@ import {
   Bell,
   Shield,
   Palette,
-  Globe,
   Key,
   CreditCard,
   Save,

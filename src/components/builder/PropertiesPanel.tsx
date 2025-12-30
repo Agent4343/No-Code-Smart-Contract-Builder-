@@ -1,9 +1,9 @@
 import { Trash2, Info, AlertTriangle } from 'lucide-react';
-import { ContractNode, PlacedBlock } from '../../types';
+import { PlacedBlock } from '../../types';
 
 interface PropertiesPanelProps {
   selectedNodeId: string | null;
-  nodes: ContractNode[];
+  nodes: { id: string; data: PlacedBlock }[];
   onUpdateNode: (id: string, data: Partial<PlacedBlock>) => void;
   onDeleteNode: (id: string) => void;
 }
@@ -112,7 +112,7 @@ export default function PropertiesPanel({
               ) : param.type === 'number' ? (
                 <input
                   type="number"
-                  value={block.parameterValues?.[param.name] ?? param.defaultValue ?? ''}
+                  value={String(block.parameterValues?.[param.name] ?? param.defaultValue ?? '')}
                   onChange={(e) => handleParameterChange(param.name, Number(e.target.value))}
                   min={param.validation?.min}
                   max={param.validation?.max}

@@ -34,7 +34,7 @@ export default function BlockPalette({ onAddBlock }: BlockPaletteProps) {
   };
 
   const getIcon = (iconName: string) => {
-    const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName];
+    const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[iconName];
     return IconComponent ? <IconComponent className="w-4 h-4" /> : null;
   };
 

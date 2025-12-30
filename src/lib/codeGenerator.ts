@@ -1,4 +1,11 @@
-import { ContractNode, GeneratedContract, SecurityReport, GasEstimates } from '../types';
+import { GeneratedContract, SecurityReport, PlacedBlock } from '../types';
+
+interface ContractNode {
+  id: string;
+  type?: string;
+  position: { x: number; y: number };
+  data: PlacedBlock;
+}
 
 // Template for generating Solidity contracts
 const CONTRACT_TEMPLATE = `// SPDX-License-Identifier: MIT

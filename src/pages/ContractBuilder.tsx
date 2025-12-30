@@ -9,6 +9,7 @@ import ReactFlow, {
   useEdgesState,
   Connection,
   NodeTypes,
+  Node,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import {
@@ -80,7 +81,7 @@ export default function ContractBuilder() {
   const handleGenerate = async () => {
     setIsGenerating(true);
     try {
-      const contract = await generateContract(nodes, projectName);
+      const contract = await generateContract(nodes as Node[], projectName);
       setGeneratedContract(contract);
       setShowCodePreview(true);
       toast.success('Contract generated successfully!');
@@ -282,7 +283,7 @@ export default function ContractBuilder() {
       {/* Properties Panel */}
       <PropertiesPanel
         selectedNodeId={selectedNodeId}
-        nodes={nodes}
+        nodes={nodes as Node[]}
         onUpdateNode={(id, data) => {
           setNodes((nds) =>
             nds.map((node) =>

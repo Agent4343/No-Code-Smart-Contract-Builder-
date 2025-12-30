@@ -8,7 +8,7 @@ interface ContractBlockNodeProps extends NodeProps {
 }
 
 function ContractBlockNode({ data, selected }: ContractBlockNodeProps) {
-  const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[data.icon];
+  const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[data.icon];
 
   const getSecurityColor = (level: string) => {
     switch (level) {

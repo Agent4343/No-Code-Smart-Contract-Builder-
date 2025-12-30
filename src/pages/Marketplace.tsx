@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import {
   Search,
-  Filter,
   Star,
   Download,
-  Shield,
   ShoppingCart,
   Tag,
   User,

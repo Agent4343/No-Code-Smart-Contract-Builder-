@@ -5,8 +5,6 @@ import {
   Copy,
   Check,
   Search,
-  Filter,
-  RefreshCw,
   CheckCircle,
   Clock,
   XCircle,
