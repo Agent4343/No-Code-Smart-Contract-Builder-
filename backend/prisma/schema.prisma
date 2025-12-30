@@ -1,0 +1,235 @@
+// ContractForge Database Schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User account
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String
+  walletAddress String?   @unique
+  displayName   String?
+  avatar        String?
+
+  // Subscription
+  subscriptionTier   SubscriptionTier @default(FREE)
+  stripeCustomerId   String?          @unique
+  subscriptionId     String?
+  subscriptionEndsAt DateTime?
+
+  // Usage limits
+  deploymentsThisMonth Int @default(0)
+  deploymentsResetAt   DateTime @default(now())
+
+  // Relations
+  projects    Project[]
+  deployments Deployment[]
+  templates   Template[]
+  apiKeys     ApiKey[]
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([walletAddress])
+}
+
+enum SubscriptionTier {
+  FREE
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+// Smart contract project
+model Project {
+  id          String @id @default(uuid())
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String?
+
+  // Contract data
+  blocks      Json   // Array of placed blocks
+  edges       Json   // Connections between blocks
+
+  // Generated code
+  sourceCode  String?
+  abi         Json?
+  bytecode    String?
+
+  // Security
+  securityScore    Int?
+  securityReport   Json?
+
+  // Gas estimates
+  estimatedGas     Int?
+
+  // Relations
+  deployments Deployment[]
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+// Contract deployment
+model Deployment {
+  id        String @id @default(uuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  // Network info
+  networkId   String
+  networkName String
+  chainId     Int
+
+  // Contract info
+  contractName    String
+  contractAddress String?
+  transactionHash String?
+
+  // Status
+  status    DeploymentStatus @default(PENDING)
+  error     String?
+
+  // Cost tracking
+  gasUsed   Int?
+  gasCost   String?
+
+  // Verification
+  verified       Boolean @default(false)
+  verifiedAt     DateTime?
+  explorerUrl    String?
+
+  // Timestamps
+  deployedAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([projectId])
+  @@index([contractAddress])
+}
+
+enum DeploymentStatus {
+  PENDING
+  COMPILING
+  DEPLOYING
+  CONFIRMED
+  FAILED
+}
+
+// Community templates
+model Template {
+  id          String @id @default(uuid())
+  authorId    String
+  author      User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String
+  category    String
+  icon        String?
+
+  // Template data
+  blocks      Json
+  edges       Json
+
+  // Metadata
+  tags        String[]
+  version     String   @default("1.0.0")
+  license     String   @default("MIT")
+
+  // Marketplace
+  isPublic    Boolean  @default(false)
+  price       Float    @default(0)
+  currency    String   @default("USD")
+
+  // Stats
+  downloads   Int      @default(0)
+  rating      Float    @default(0)
+  reviewCount Int      @default(0)
+
+  // Audit status
+  audited     Boolean  @default(false)
+  auditedBy   String?
+  auditedAt   DateTime?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([authorId])
+  @@index([category])
+  @@index([isPublic])
+}
+
+// API Keys for programmatic access
+model ApiKey {
+  id        String @id @default(uuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name      String
+  keyHash   String @unique
+  prefix    String // First 8 chars for identification
+
+  // Permissions
+  permissions String[]
+
+  // Usage
+  lastUsedAt DateTime?
+  usageCount Int @default(0)
+
+  // Status
+  isActive  Boolean @default(true)
+  expiresAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([keyHash])
+}
+
+// Transaction history for billing
+model Transaction {
+  id          String @id @default(uuid())
+  userId      String
+
+  type        TransactionType
+  amount      Float
+  currency    String @default("USD")
+
+  // Stripe
+  stripePaymentId String?
+  stripeInvoiceId String?
+
+  // Status
+  status      String
+
+  // Metadata
+  description String?
+  metadata    Json?
+
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+}
+
+enum TransactionType {
+  SUBSCRIPTION
+  DEPLOYMENT_FEE
+  TEMPLATE_PURCHASE
+  TEMPLATE_SALE
+  REFUND
+}
