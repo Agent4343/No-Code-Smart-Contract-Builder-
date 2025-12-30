@@ -1,4 +1,4 @@
-import { GeneratedContract, SecurityReport, PlacedBlock } from '../types';
+import { GeneratedContract, SecurityReport, PlacedBlock, GasEstimates } from '../types';
 
 interface ContractNode {
   id: string;
