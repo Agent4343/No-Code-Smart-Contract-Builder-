@@ -8,10 +8,12 @@ import {
   BarChart3,
   Settings,
   Blocks,
+  BookOpen,
 } from 'lucide-react';
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/how-it-works', icon: BookOpen, label: 'How It Works' },
   { to: '/builder', icon: Puzzle, label: 'Builder' },
   { to: '/templates', icon: FileCode, label: 'Templates' },
   { to: '/deployments', icon: Rocket, label: 'Deployments' },

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
+import HowItWorks from './pages/HowItWorks';
 import ContractBuilder from './pages/ContractBuilder';
 import Templates from './pages/Templates';
 import Deployments from './pages/Deployments';
@@ -13,6 +14,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/builder" element={<ContractBuilder />} />
         <Route path="/builder/:templateId" element={<ContractBuilder />} />
         <Route path="/templates" element={<Templates />} />
