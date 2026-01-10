@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import {
   Search,
-  Filter,
   Clock,
   BookOpen,
   Award,
@@ -11,7 +10,6 @@ import {
   Check,
   Users,
   ChevronDown,
-  X,
 } from 'lucide-react';
 import { useTrainingStore } from '../../store/trainingStore';
 import { courses, courseBundles, pricingPackages } from '../../data/cnlopbData';
@@ -41,7 +39,6 @@ export default function CourseCatalog() {
     searchParams.get('category') || 'all'
   );
   const [selectedLevel, setSelectedLevel] = useState<string>('all');
-  const [showFilters, setShowFilters] = useState(false);
   const [viewMode, setViewMode] = useState<'courses' | 'bundles' | 'pricing'>('courses');
 
   const { addToCart, cart, isEnrolled } = useTrainingStore();

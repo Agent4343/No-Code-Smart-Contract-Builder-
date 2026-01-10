@@ -12,7 +12,7 @@ import {
   Anchor,
 } from 'lucide-react';
 import { useTrainingStore } from '../../store/trainingStore';
-import { courses, getFeaturedCourses, avatars } from '../../data/cnlopbData';
+import { getFeaturedCourses, avatars } from '../../data/cnlopbData';
 import AIAvatar from '../../components/training/AIAvatar';
 
 export default function TrainingDashboard() {

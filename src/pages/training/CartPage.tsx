@@ -8,7 +8,6 @@ import {
   Tag,
   ChevronRight,
   Check,
-  AlertCircle,
 } from 'lucide-react';
 import { useTrainingStore } from '../../store/trainingStore';
 import { courses, courseBundles } from '../../data/cnlopbData';

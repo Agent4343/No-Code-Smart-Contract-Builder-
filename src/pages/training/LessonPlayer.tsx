@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import {
   Play,
-  Pause,
   ChevronLeft,
   ChevronRight,
   Check,
   BookOpen,
   FileText,
-  Clock,
   Menu,
   X,
   MessageCircle,
@@ -17,7 +15,7 @@ import {
 import { useTrainingStore } from '../../store/trainingStore';
 import { courses, avatars } from '../../data/cnlopbData';
 import AIAvatar, { FloatingAvatar } from '../../components/training/AIAvatar';
-import type { Lesson, LessonContent, Module, AvatarMessage } from '../../types/training';
+import type { AvatarMessage } from '../../types/training';
 
 export default function LessonPlayer() {
   const { courseId } = useParams();
@@ -80,7 +78,7 @@ export default function LessonPlayer() {
   }
 
   const currentContent = activeLesson.contents[currentContentIndex];
-  const isLessonCompleted = progress?.lessonsCompleted.includes(activeLessonId);
+  const isLessonCompleted = activeLessonId ? progress?.lessonsCompleted.includes(activeLessonId) : false;
 
   const handleNextContent = () => {
     if (currentContentIndex < activeLesson.contents.length - 1) {

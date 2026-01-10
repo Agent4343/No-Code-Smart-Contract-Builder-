@@ -3,10 +3,8 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import {
   Clock,
   ChevronLeft,
-  ChevronRight,
   Check,
   X,
-  AlertCircle,
   Trophy,
   RotateCcw,
   BookOpen,
@@ -15,7 +13,7 @@ import {
 import { useTrainingStore } from '../../store/trainingStore';
 import { courses, avatars } from '../../data/cnlopbData';
 import { QuizAvatar } from '../../components/training/AIAvatar';
-import type { QuizQuestion, QuizAttempt } from '../../types/training';
+import type { QuizAttempt } from '../../types/training';
 
 export default function QuizPage() {
   const { courseId, moduleId } = useParams();

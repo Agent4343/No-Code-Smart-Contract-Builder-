@@ -25,7 +25,7 @@ export default function CourseDetail() {
   const navigate = useNavigate();
   const [expandedModules, setExpandedModules] = useState<string[]>([]);
 
-  const { addToCart, cart, isEnrolled, enrollInCourse, isAuthenticated } =
+  const { addToCart, cart, isEnrolled, isAuthenticated } =
     useTrainingStore();
 
   const course = courses.find((c) => c.slug === slug);

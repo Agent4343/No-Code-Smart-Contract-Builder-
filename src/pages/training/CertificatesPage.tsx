@@ -12,7 +12,7 @@ import { useTrainingStore } from '../../store/trainingStore';
 import { courses } from '../../data/cnlopbData';
 
 export default function CertificatesPage() {
-  const { certificates, isAuthenticated, user } = useTrainingStore();
+  const { certificates, isAuthenticated } = useTrainingStore();
 
   if (!isAuthenticated) {
     return (

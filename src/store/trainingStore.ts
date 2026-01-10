@@ -282,7 +282,7 @@ export const useTrainingStore = create<TrainingState>()(
         });
       },
 
-      submitQuizAttempt: (courseId, quizId, attempt) => {
+      submitQuizAttempt: (courseId, _quizId, attempt) => {
         const { userProgress } = get();
         const progress = userProgress[courseId];
         if (!progress) return;
