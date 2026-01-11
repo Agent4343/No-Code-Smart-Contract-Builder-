@@ -41,6 +41,9 @@ One-click deployment across multiple networks:
 - **Testnet Sandbox**: Test contracts before mainnet deployment
 - **Analytics Dashboard**: Monitor contract performance and usage
 - **Template Marketplace**: Discover and share community templates
+- **Interactive Tutorial**: Step-by-step "How It Works" guide for new users
+- **Real-time Compilation**: Instant Solidity compilation with error feedback
+- **Contract Verification**: Automatic source verification on block explorers
 
 ## Getting Started
 
@@ -91,6 +94,7 @@ src/
 │   ├── ContractBuilder.tsx
 │   ├── Dashboard.tsx
 │   ├── Deployments.tsx
+│   ├── HowItWorks.tsx     # Interactive tutorial & guide
 │   ├── Marketplace.tsx
 │   ├── Settings.tsx
 │   └── Templates.tsx
@@ -105,6 +109,16 @@ src/
 ├── App.tsx
 ├── index.css
 └── main.tsx
+
+backend/
+├── src/
+│   ├── routes/            # API route handlers
+│   ├── services/          # Business logic
+│   ├── middleware/        # Auth, validation, rate limiting
+│   └── index.ts           # Server entry point
+├── prisma/
+│   └── schema.prisma      # Database schema
+└── package.json
 ```
 
 ## Available Blocks
@@ -184,12 +198,30 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Tailwind CSS](https://tailwindcss.com/) for styling
 - [wagmi](https://wagmi.sh/) for wallet integration
 
+## Documentation
+
+- **[README.md](README.md)** - This file, project overview and getting started
+- **[DEPLOY.md](DEPLOY.md)** - Complete deployment guide for production
+- **[BUSINESS_PLAN.txt](BUSINESS_PLAN.txt)** - Business model and monetization strategies
+- **[backend/README.md](backend/README.md)** - Backend API documentation
+- **How It Works** - In-app interactive tutorial (accessible from sidebar)
+
 ## Roadmap
 
+### Completed
+- [x] Visual drag-and-drop contract builder
+- [x] Multi-chain deployment support
+- [x] Wallet integration (MetaMask, WalletConnect)
+- [x] Backend API with authentication
+- [x] Stripe payment processing
+- [x] Security scanning
+- [x] Template marketplace
+
+### In Progress
 - [ ] Solana/Rust contract support
 - [ ] AI-powered contract optimization
 - [ ] Formal verification integration
 - [ ] Custom block creation
-- [ ] Contract upgrade patterns
+- [ ] Contract upgrade patterns (UUPS, Transparent Proxy)
 - [ ] Multi-language support
 - [ ] Mobile app
