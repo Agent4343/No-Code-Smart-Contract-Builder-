@@ -1236,58 +1236,506 @@ Cold Water Immersion (Survival Suits):
   },
   {
     id: 'course-002',
-    title: 'Environmental Compliance Essentials',
+    title: 'Environmental Compliance & Spill Response (Accord Acts)',
     slug: 'environmental-compliance-essentials',
-    description: 'Master environmental regulations and protection requirements for offshore operations.',
-    longDescription: `Learn the critical environmental regulations that govern offshore petroleum operations in the Canada-Newfoundland and Labrador offshore area. This course covers spill prevention and response, emissions management, waste handling, and marine life protection. Emma Blackwood, our Environmental Compliance Specialist, will share real-world examples and best practices.`,
+    description: 'Master environmental regulations, spill prevention, and response requirements under the Canada-Newfoundland Atlantic Accord.',
+    longDescription: `Learn the critical environmental regulations governing offshore petroleum operations in the Canada-Newfoundland and Labrador offshore area. This course covers the Accord Acts environmental requirements, Safety and Environmental Management Systems (SEMS) under SOR/2024-25, spill prevention and response ($1 billion financial responsibility), tiered response capability, emissions monitoring, and waste management. Emma Blackwood, our Environmental Compliance Specialist, guides you through regulatory requirements and real-world scenarios.`,
     imageUrl: '/courses/environmental-compliance.jpg',
     category: 'environmental-compliance',
     level: 'intermediate',
     modules: [
       {
         id: 'mod-002-1',
-        title: 'Environmental Management Systems',
-        description: 'Understanding EMS requirements',
+        title: 'Safety and Environmental Management Systems',
+        description: 'Understanding SEMS requirements under SOR/2024-25',
         lessons: [
           {
             id: 'les-002-1-1',
-            title: 'Introduction to Environmental Management',
-            description: 'Core concepts of offshore environmental management',
+            title: 'Introduction to SEMS',
+            description: 'Safety and Environmental Management System requirements',
             avatarId: 'environmental-specialist-emma',
             contents: [
               {
-                id: 'cont-006',
+                id: 'cont-env-001',
                 type: 'avatar-presentation',
                 title: 'Environmental Stewardship',
                 content: 'Introduction to environmental responsibilities',
-                avatarScript: 'Hello! I\'m Emma Blackwood, and protecting our ocean environment is my passion. In offshore operations, we have a responsibility to minimize our environmental footprint. Let me show you how we do that through comprehensive environmental management systems.',
+                avatarScript: 'Hello! I\'m Emma Blackwood, and protecting our ocean environment is my passion. Under SOR/2024-25, every operator must establish a Safety and Environmental Management System - or SEMS. This isn\'t just a document on a shelf - it\'s a living system that guides how we prevent environmental harm every single day.',
                 duration: 8,
               },
+              {
+                id: 'cont-env-002',
+                type: 'text',
+                title: 'SEMS Requirements (SOR/2024-25 Part 3)',
+                content: `SAFETY AND ENVIRONMENTAL MANAGEMENT SYSTEM (Sections 12-28):
+
+Every operator must establish and implement a SEMS that includes:
+
+1. POLICY AND COMMITMENT
+   • Safety and environmental protection policy
+   • Signed by senior management
+   • Communicated to all personnel
+
+2. ORGANIZATIONAL STRUCTURE
+   • Defined roles and responsibilities
+   • Clear lines of authority
+   • Accountability for environmental performance
+
+3. RISK MANAGEMENT
+   • Hazard identification processes
+   • Environmental impact assessment
+   • Risk control measures
+   • Continuous monitoring
+
+4. OPERATING PROCEDURES
+   • Documented procedures for all activities
+   • Environmental controls for operations
+   • Permit-to-work systems where required
+
+5. MANAGEMENT OF CHANGE
+   • Formal change management process
+   • Environmental review of changes
+   • Documentation and approval
+
+6. TRAINING AND COMPETENCY
+   • Environmental awareness training
+   • Role-specific training
+   • Competency verification
+
+7. EMERGENCY PREPAREDNESS
+   • Environmental emergency response plans
+   • Spill response capability
+   • Regular drills and exercises
+
+8. MONITORING AND MEASUREMENT
+   • Environmental monitoring programs
+   • Emissions tracking
+   • Discharge monitoring
+
+9. AUDIT AND REVIEW
+   • Internal audit program
+   • Management review (minimum annually)
+   • Continuous improvement
+
+The SEMS must be documented, communicated to all personnel, and reviewed at least annually.`,
+                duration: 15,
+              },
             ],
-            regulationSections: ['reg-002', 'reg-005'],
+            regulationSections: ['reg-005', 'reg-010'],
             duration: 25,
             order: 1,
+          },
+          {
+            id: 'les-002-1-2',
+            title: 'Environmental Impact Assessment',
+            description: 'Understanding environmental assessments for offshore operations',
+            avatarId: 'environmental-specialist-emma',
+            contents: [
+              {
+                id: 'cont-env-003',
+                type: 'avatar-presentation',
+                title: 'Environmental Assessments',
+                content: 'How we assess environmental impacts',
+                avatarScript: 'Before any offshore activity begins, we must assess its potential environmental impact. This includes impacts on marine life, water quality, and air quality. The assessment identifies sensitive areas, protected species, and the measures we\'ll take to minimize our footprint.',
+                duration: 10,
+              },
+              {
+                id: 'cont-env-004',
+                type: 'text',
+                title: 'Environmental Considerations',
+                content: `ENVIRONMENTAL IMPACT CONSIDERATIONS:
+
+MARINE ENVIRONMENT:
+• Seabird populations and migration routes
+• Marine mammal habitats (whales, seals)
+• Fish spawning areas
+• Sensitive seabed habitats
+• Protected areas and marine refuges
+
+POTENTIAL IMPACTS FROM OPERATIONS:
+• Noise from seismic, drilling, and vessel operations
+• Light pollution affecting seabirds
+• Discharge of produced water and drilling fluids
+• Air emissions (flaring, venting, equipment)
+• Physical presence of structures
+• Potential spills
+
+MITIGATION MEASURES:
+• Timing restrictions during sensitive periods
+• Marine mammal observation programs
+• Seabird attraction management (lighting)
+• Treatment of discharges
+• Emissions monitoring and reduction
+• Spill prevention measures
+
+MONITORING REQUIREMENTS:
+• Baseline environmental surveys
+• Ongoing monitoring during operations
+• Post-activity assessment
+• Reporting to C-NLOER
+
+PROTECTED SPECIES:
+Personnel must be trained to:
+• Identify protected species
+• Report sightings
+• Follow mitigation protocols
+• Stop certain operations if species observed`,
+                duration: 12,
+              },
+            ],
+            regulationSections: ['reg-005', 'reg-010'],
+            duration: 25,
+            order: 2,
           },
         ],
         quiz: {
           id: 'quiz-002-1',
-          title: 'Environmental Management Quiz',
-          description: 'Test your EMS knowledge',
+          title: 'Environmental Management Systems Quiz',
+          description: 'Test your SEMS knowledge',
           questions: [
             {
-              id: 'q-005',
-              question: 'How often must emissions be reported under current C-NLOER requirements?',
+              id: 'q-env-001',
+              question: 'How often must the Safety and Environmental Management System (SEMS) be reviewed?',
               type: 'multiple-choice',
               options: [
-                'Annually',
-                'Quarterly',
-                'Monthly',
-                'Weekly',
+                'Every 6 months',
+                'At least annually',
+                'Every 2 years',
+                'Every 5 years',
               ],
-              correctAnswer: 'Quarterly',
-              explanation: 'Current regulations require quarterly emissions reporting with real-time monitoring for major sources.',
-              avatarExplanation: 'Since the 2022 amendments to C-NLOER-ENV-001, emissions must be reported quarterly, not annually as before. This change was made to provide more timely data for environmental monitoring. Additionally, major emission sources now require real-time monitoring systems.',
-              regulationReference: 'reg-002',
+              correctAnswer: 'At least annually',
+              explanation: 'SOR/2024-25 requires SEMS to be reviewed at least annually through management review.',
+              avatarExplanation: 'The regulations require management review of the SEMS at least once per year. This ensures the system remains effective and is updated based on lessons learned, incidents, audits, and changes in operations. Many operators review more frequently, but annual is the minimum requirement.',
+              regulationReference: 'reg-005',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-env-002',
+              question: 'Who must sign the Safety and Environmental Protection Policy?',
+              type: 'multiple-choice',
+              options: [
+                'The Environmental Officer',
+                'Senior Management',
+                'The Safety Committee',
+                'All employees',
+              ],
+              correctAnswer: 'Senior Management',
+              explanation: 'The policy must be signed by senior management to demonstrate commitment at the highest level.',
+              avatarExplanation: 'Senior management must sign the policy. This isn\'t just a formality - it demonstrates commitment from the top of the organization. Environmental protection must be a core value driven by leadership, not just a compliance requirement handled by specialists.',
+              regulationReference: 'reg-005',
+              difficulty: 'beginner',
+              points: 10,
+            },
+            {
+              id: 'q-env-003',
+              question: 'Which of the following is NOT a required element of a SEMS under SOR/2024-25?',
+              type: 'multiple-choice',
+              options: [
+                'Emergency preparedness and response plans',
+                'Management of change procedures',
+                'Daily environmental reports to the regulator',
+                'Internal audit program',
+              ],
+              correctAnswer: 'Daily environmental reports to the regulator',
+              explanation: 'While monitoring is required, daily reports to the regulator are not a specified SEMS element.',
+              avatarExplanation: 'The SEMS must include emergency preparedness, management of change, and internal audits. However, daily reporting to the regulator is not a standard requirement. Reporting requirements vary by authorization conditions, but the SEMS focuses on internal management systems, not daily external reporting.',
+              regulationReference: 'reg-005',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+          ],
+          passingScore: 75,
+          timeLimit: 15,
+          attemptsAllowed: 3,
+          avatarId: 'environmental-specialist-emma',
+        },
+        order: 1,
+        estimatedTime: 55,
+        prerequisites: [],
+      },
+      {
+        id: 'mod-002-2',
+        title: 'Spill Prevention and Response',
+        description: 'Comprehensive spill management under the Accord Acts',
+        lessons: [
+          {
+            id: 'les-002-2-1',
+            title: 'Spill Prevention Requirements',
+            description: 'Preventing spills through design and operations',
+            avatarId: 'environmental-specialist-emma',
+            contents: [
+              {
+                id: 'cont-env-005',
+                type: 'avatar-presentation',
+                title: 'Prevention First',
+                content: 'The importance of spill prevention',
+                avatarScript: 'The best spill response is prevention. Under the Accord Acts, operators must implement comprehensive spill prevention measures - from equipment design to operational procedures. Prevention isn\'t just good practice; it\'s a regulatory requirement with significant financial responsibility backing it up.',
+                duration: 10,
+              },
+              {
+                id: 'cont-env-006',
+                type: 'text',
+                title: 'Spill Prevention Requirements',
+                content: `SPILL PREVENTION (Accord Acts Part III.1):
+
+OPERATOR REQUIREMENTS:
+• Implement spill prevention measures in design and operations
+• Maintain equipment to prevent releases
+• Conduct regular inspections of containment systems
+• Train personnel in spill prevention practices
+
+FINANCIAL RESPONSIBILITY:
+Operators must maintain proof of financial resources of at least:
+• $1 BILLION for spill response
+• This was increased from $250 million in 2022
+• Must demonstrate ability to pay for cleanup and damages
+
+PREVENTION MEASURES:
+Design Controls:
+• Double-walled containment for storage
+• Automated shut-off systems
+• Spill containment berms and drip trays
+• Proper pipe routing and protection
+
+Operational Controls:
+• Procedures for all fluid transfer operations
+• Supervision requirements
+• Pre-job checks and inspections
+• Stop work authority for environmental concerns
+
+Maintenance:
+• Preventive maintenance programs
+• Inspection schedules for critical equipment
+• Integrity testing of containment systems
+• Documentation of all maintenance
+
+Personnel:
+• Training in spill prevention
+• Awareness of environmental sensitivity
+• Authority to stop operations if spill risk identified`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-010'],
+            duration: 30,
+            order: 1,
+          },
+          {
+            id: 'les-002-2-2',
+            title: 'Tiered Response Capability',
+            description: 'Understanding Tier 1, 2, and 3 response requirements',
+            avatarId: 'environmental-specialist-emma',
+            contents: [
+              {
+                id: 'cont-env-007',
+                type: 'avatar-presentation',
+                title: 'Response Tiers',
+                content: 'Understanding tiered spill response',
+                avatarScript: 'Spill response is organized into three tiers based on the size and complexity of the incident. Tier 1 is what we handle on-site immediately. Tier 2 brings in regional resources within 24 hours. Tier 3 is for major incidents requiring national or international support. Every offshore worker plays a role in Tier 1 response.',
+                duration: 10,
+              },
+              {
+                id: 'cont-env-008',
+                type: 'text',
+                title: 'Tiered Response System',
+                content: `TIERED SPILL RESPONSE CAPABILITY:
+
+TIER 1 - ON-SITE RESPONSE (Immediate)
+• First response using on-site equipment and personnel
+• Small spills that can be controlled locally
+• Equipment available on installation:
+  - Absorbent materials and booms
+  - Portable pumps and skimmers
+  - Personal protective equipment
+  - Spill response containers
+• All personnel trained in basic response
+• Response within minutes
+
+TIER 2 - REGIONAL RESPONSE (Within 24 hours)
+• Larger spills requiring additional resources
+• Mobilization of dedicated response vessels
+• Specialized equipment deployment:
+  - Ocean containment booms
+  - Large-scale skimmers
+  - Storage and transfer systems
+• Trained spill response teams
+• Coordination with response organizations
+• Response within 24 hours
+
+TIER 3 - NATIONAL/INTERNATIONAL (Major incidents)
+• Major spills requiring extensive resources
+• National and international mutual aid
+• Government agency involvement
+• Multi-organization coordination
+• Long-duration response operations
+• Wildlife protection operations
+• Shoreline protection and cleanup
+
+YOUR ROLE IN TIER 1:
+Every offshore worker should:
+• Know location of spill response equipment
+• Be trained in basic response procedures
+• Report spills immediately
+• Assist with initial containment if safe
+• Follow direction of response coordinator`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-010', 'reg-006'],
+            duration: 30,
+            order: 2,
+          },
+          {
+            id: 'les-002-2-3',
+            title: 'Spill Reporting Requirements',
+            description: 'Immediate notification and reporting procedures',
+            avatarId: 'environmental-specialist-emma',
+            contents: [
+              {
+                id: 'cont-env-009',
+                type: 'avatar-presentation',
+                title: 'Reporting Requirements',
+                content: 'What, when, and how to report spills',
+                avatarScript: 'When a spill occurs, immediate notification is critical. The regulations require notification to C-NLOER\'s Chief Conservation Officer for any unintended release. There\'s no minimum threshold - any petroleum release must be reported. Let me walk you through exactly what needs to happen.',
+                duration: 8,
+              },
+              {
+                id: 'cont-env-010',
+                type: 'text',
+                title: 'Spill Reporting Procedures',
+                content: `SPILL REPORTING REQUIREMENTS:
+
+IMMEDIATE NOTIFICATION to C-NLOER Chief Conservation Officer for:
+• Any unintended release of petroleum
+• Release of pollutants
+• Debris that may pose a hazard
+• Any incident that may result in a release
+
+NOTIFICATION TIMELINE:
+• Immediate verbal notification (as soon as practical)
+• Written report within 24 hours
+• Detailed follow-up report as required
+
+INFORMATION TO REPORT:
+Initial Notification:
+• Date, time, and location
+• Type and estimated quantity of release
+• Source of release
+• Actions being taken
+• Weather and sea conditions
+• Any impacts observed
+
+Follow-up Report:
+• Confirmed quantity released
+• Cause of release
+• Response actions taken
+• Effectiveness of response
+• Environmental impact assessment
+• Corrective actions to prevent recurrence
+
+INTERNAL REPORTING:
+Within your installation:
+1. Notify supervisor immediately
+2. Activate spill response if safe to do so
+3. Control room notifies OIM
+4. OIM activates emergency response plan
+5. Notifications made to shore and regulator
+
+RECORD KEEPING:
+• All spill events must be logged
+• Response actions documented
+• Lessons learned captured
+• Records maintained minimum 5 years`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-010', 'reg-012'],
+            duration: 28,
+            order: 3,
+          },
+        ],
+        quiz: {
+          id: 'quiz-002-2',
+          title: 'Spill Prevention and Response Quiz',
+          description: 'Test your spill response knowledge',
+          questions: [
+            {
+              id: 'q-env-004',
+              question: 'What is the minimum financial responsibility operators must maintain for spill response?',
+              type: 'multiple-choice',
+              options: [
+                '$100 million',
+                '$250 million',
+                '$500 million',
+                '$1 billion',
+              ],
+              correctAnswer: '$1 billion',
+              explanation: 'Since 2022, operators must maintain proof of at least $1 billion in financial resources for spill response.',
+              avatarExplanation: 'This was increased from $250 million to $1 billion in 2022 to ensure operators can cover the full cost of a major spill. This isn\'t just insurance - operators must demonstrate actual financial capacity. The North Atlantic environment is too valuable to leave cleanup to chance.',
+              regulationReference: 'reg-010',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-env-005',
+              question: 'What is the first action when you discover an oil spill?',
+              type: 'multiple-choice',
+              options: [
+                'Start cleaning up immediately',
+                'Ensure personal safety and report to supervisor',
+                'Take photos for documentation',
+                'Attempt to find the source',
+              ],
+              correctAnswer: 'Ensure personal safety and report to supervisor',
+              explanation: 'Safety first, then immediate reporting to activate the spill response plan.',
+              avatarExplanation: 'Your safety comes first - spilled oil can be slippery, there may be vapors, or the source could pose other hazards. Once you\'re safe, report immediately to your supervisor. This activates our trained response team with proper equipment. Never try to clean up without proper training and PPE.',
+              regulationReference: 'reg-010',
+              difficulty: 'beginner',
+              points: 15,
+            },
+            {
+              id: 'q-env-006',
+              question: 'Within what timeframe must Tier 2 response capability be mobilized?',
+              type: 'multiple-choice',
+              options: [
+                '1 hour',
+                '6 hours',
+                '24 hours',
+                '48 hours',
+              ],
+              correctAnswer: '24 hours',
+              explanation: 'Tier 2 (regional) response resources must be mobilizable within 24 hours.',
+              avatarExplanation: 'Tier 2 response - bringing in regional resources beyond what\'s on the installation - must be achievable within 24 hours. This includes dedicated response vessels, specialized equipment, and additional trained personnel. Tier 1 (on-site) response starts immediately, while Tier 3 (major incident) may take longer to fully mobilize.',
+              regulationReference: 'reg-010',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-env-007',
+              question: 'Is there a minimum spill size threshold before reporting is required to C-NLOER?',
+              type: 'true-false',
+              correctAnswer: 'false',
+              explanation: 'Any unintended release of petroleum must be reported - there is no minimum threshold.',
+              avatarExplanation: 'There is NO minimum threshold. Any unintended release of petroleum must be reported to the Chief Conservation Officer. Even small drips that make it overboard are reportable. This might seem strict, but it ensures we track all releases and maintain accountability for our environmental performance.',
+              regulationReference: 'reg-010',
+              difficulty: 'beginner',
+              points: 10,
+            },
+            {
+              id: 'q-env-008',
+              question: 'Which of the following is a Tier 1 spill response resource?',
+              type: 'multiple-choice',
+              options: [
+                'Dedicated response vessel',
+                'On-site absorbent materials and booms',
+                'National mutual aid organizations',
+                'Government cleanup crews',
+              ],
+              correctAnswer: 'On-site absorbent materials and booms',
+              explanation: 'Tier 1 uses on-site resources for immediate response. Dedicated vessels are Tier 2.',
+              avatarExplanation: 'Tier 1 response uses what we have on the installation - absorbent pads, portable booms, skimmers, and trained personnel. These are resources we can deploy within minutes. Dedicated response vessels are part of Tier 2, which involves bringing in additional regional resources.',
+              regulationReference: 'reg-010',
               difficulty: 'intermediate',
               points: 15,
             },
@@ -1297,88 +1745,224 @@ Cold Water Immersion (Survival Suits):
           attemptsAllowed: 3,
           avatarId: 'environmental-specialist-emma',
         },
-        order: 1,
-        estimatedTime: 90,
-        prerequisites: [],
+        order: 2,
+        estimatedTime: 95,
+        prerequisites: ['mod-002-1'],
       },
       {
-        id: 'mod-002-2',
-        title: 'Spill Prevention and Response',
-        description: 'Comprehensive spill management training',
+        id: 'mod-002-3',
+        title: 'Emissions and Waste Management',
+        description: 'Air emissions, discharges, and waste handling',
         lessons: [
           {
-            id: 'les-002-2-1',
-            title: 'Spill Prevention Strategies',
-            description: 'Preventing spills before they happen',
+            id: 'les-002-3-1',
+            title: 'Air Emissions Management',
+            description: 'Controlling and monitoring air emissions',
             avatarId: 'environmental-specialist-emma',
             contents: [
               {
-                id: 'cont-007',
+                id: 'cont-env-011',
                 type: 'avatar-presentation',
-                title: 'Prevention First',
-                content: 'The importance of spill prevention',
-                avatarScript: 'The best spill response is prevention. In this lesson, we\'ll explore the engineering controls, operational procedures, and personal practices that help prevent spills from occurring in the first place.',
-                duration: 12,
+                title: 'Emissions Control',
+                content: 'Managing air emissions from offshore operations',
+                avatarScript: 'Offshore operations generate various air emissions - from combustion equipment, flaring, venting, and fugitive sources. We\'re required to monitor, minimize, and report these emissions. Climate considerations are increasingly important in our regulatory requirements.',
+                duration: 8,
               },
               {
-                id: 'cont-008',
-                type: 'scenario',
-                title: 'Spill Scenario Exercise',
-                content: 'Work through a realistic spill scenario',
-                duration: 20,
+                id: 'cont-env-012',
+                type: 'text',
+                title: 'Emissions Management Requirements',
+                content: `AIR EMISSIONS MANAGEMENT:
+
+EMISSION SOURCES:
+• Power generation (turbines, generators)
+• Flaring of associated gas
+• Venting operations
+• Fugitive emissions (leaks, seals)
+• Vessel and helicopter operations
+• Drilling operations
+
+REGULATORY REQUIREMENTS:
+• Emissions monitoring program
+• Quarterly emissions reporting
+• Real-time monitoring for major sources
+• Flare minimization programs
+• Leak detection and repair (LDAR)
+
+KEY POLLUTANTS TRACKED:
+• Carbon dioxide (CO2)
+• Methane (CH4)
+• Nitrogen oxides (NOx)
+• Sulfur dioxide (SO2)
+• Volatile organic compounds (VOCs)
+• Particulate matter
+
+FLARING AND VENTING:
+• Flaring minimized to extent practical
+• Continuous flare monitoring
+• Reporting of all flaring events
+• Justification required for routine flaring
+• Emergency flaring documented
+
+YOUR ROLE:
+• Report unusual emissions or smoke
+• Ensure equipment operates efficiently
+• Report any leaks or venting
+• Follow procedures to minimize emissions`,
+                duration: 12,
               },
             ],
             regulationSections: ['reg-005'],
-            duration: 40,
+            duration: 22,
             order: 1,
+          },
+          {
+            id: 'les-002-3-2',
+            title: 'Waste Management',
+            description: 'Handling and disposal of offshore waste',
+            avatarId: 'environmental-specialist-emma',
+            contents: [
+              {
+                id: 'cont-env-013',
+                type: 'avatar-presentation',
+                title: 'Waste Handling',
+                content: 'Proper waste management offshore',
+                avatarScript: 'Waste management offshore is different from onshore. We can\'t just put things in a dumpster. Every type of waste has specific handling, storage, and disposal requirements. Some waste can go overboard under specific conditions, but most must be brought to shore for proper disposal.',
+                duration: 8,
+              },
+              {
+                id: 'cont-env-014',
+                type: 'text',
+                title: 'Waste Management Procedures',
+                content: `OFFSHORE WASTE MANAGEMENT:
+
+WASTE CATEGORIES:
+• Domestic waste (food, packaging)
+• Industrial waste (rags, filters, scrap)
+• Hazardous waste (chemicals, batteries, oils)
+• Drilling waste (cuttings, mud, fluids)
+• Medical waste
+• Electronic waste
+
+DISCHARGE RESTRICTIONS:
+Food Waste:
+• May be discharged if ground to <25mm
+• Minimum 12 nautical miles from land
+• No plastic content
+
+Treated Sewage:
+• Must meet treatment standards
+• Minimum distance from land requirements
+
+Produced Water:
+• Treatment required before discharge
+• Oil content limits (typically <30 mg/L)
+• Monitoring and sampling required
+
+PROHIBITED DISCHARGES:
+• Plastics - NEVER discharged at sea
+• Garbage with plastics
+• Oil or oily mixtures (above limits)
+• Noxious substances
+• Hazardous waste
+
+WASTE SEGREGATION:
+All waste must be segregated:
+• Color-coded containers
+• Clear labeling
+• Proper storage areas
+• Training for all personnel
+
+RETURN TO SHORE:
+Most waste returned to shore for:
+• Recycling
+• Treatment
+• Approved disposal
+• Documentation required`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-005'],
+            duration: 25,
+            order: 2,
           },
         ],
         quiz: {
-          id: 'quiz-002-2',
-          title: 'Spill Response Quiz',
-          description: 'Test your spill response knowledge',
+          id: 'quiz-002-3',
+          title: 'Emissions and Waste Quiz',
+          description: 'Test your emissions and waste management knowledge',
           questions: [
             {
-              id: 'q-006',
-              question: 'What is the first action to take when discovering an oil spill?',
+              id: 'q-env-009',
+              question: 'How often must emissions be reported under current regulations?',
               type: 'multiple-choice',
               options: [
-                'Start cleaning up immediately',
-                'Ensure personal safety and report to supervisor',
-                'Take photos for documentation',
-                'Notify the media',
+                'Monthly',
+                'Quarterly',
+                'Annually',
+                'Only when exceeding limits',
               ],
-              correctAnswer: 'Ensure personal safety and report to supervisor',
-              explanation: 'Safety first, then immediate reporting to activate the spill response plan.',
-              avatarExplanation: 'I know it\'s tempting to start cleaning up right away, but your safety must come first! Ensure you\'re in a safe location, then report the spill to your supervisor immediately. This activates our trained response team and ensures proper equipment and procedures are used. Improper cleanup can actually make things worse!',
+              correctAnswer: 'Quarterly',
+              explanation: 'Emissions must be reported quarterly, with real-time monitoring for major sources.',
+              avatarExplanation: 'Quarterly reporting is the standard requirement. Major emission sources also require real-time monitoring systems. This frequency was increased from annual reporting to provide more timely data for environmental management and regulatory oversight.',
               regulationReference: 'reg-005',
               difficulty: 'intermediate',
-              points: 20,
+              points: 10,
+            },
+            {
+              id: 'q-env-010',
+              question: 'Can plastics ever be discharged at sea from offshore installations?',
+              type: 'true-false',
+              correctAnswer: 'false',
+              explanation: 'Plastics can NEVER be discharged at sea - this is an absolute prohibition.',
+              avatarExplanation: 'Never. There are absolutely no circumstances where plastic can be discharged at sea. This is a strict international and regulatory requirement. All plastics must be returned to shore for proper disposal or recycling. Marine plastic pollution is a serious environmental issue.',
+              regulationReference: 'reg-005',
+              difficulty: 'beginner',
+              points: 10,
+            },
+            {
+              id: 'q-env-011',
+              question: 'What is the maximum oil content typically permitted in treated produced water discharge?',
+              type: 'multiple-choice',
+              options: [
+                '10 mg/L',
+                '30 mg/L',
+                '50 mg/L',
+                '100 mg/L',
+              ],
+              correctAnswer: '30 mg/L',
+              explanation: 'Produced water must be treated to achieve oil content below 30 mg/L before discharge.',
+              avatarExplanation: 'The typical limit is 30 mg/L (30 parts per million). This requires effective treatment systems and regular monitoring. Some authorizations may have stricter limits depending on the location and environmental sensitivity. Always verify the specific limits for your installation.',
+              regulationReference: 'reg-005',
+              difficulty: 'advanced',
+              points: 15,
             },
           ],
-          passingScore: 80,
-          timeLimit: 15,
+          passingScore: 75,
+          timeLimit: 12,
           attemptsAllowed: 3,
           avatarId: 'environmental-specialist-emma',
         },
-        order: 2,
-        estimatedTime: 75,
-        prerequisites: ['mod-002-1'],
+        order: 3,
+        estimatedTime: 50,
+        prerequisites: ['mod-002-2'],
       },
     ],
     instructorAvatarId: 'environmental-specialist-emma',
-    targetAudience: ['Environmental officers', 'Supervisors', 'Operations personnel'],
+    targetAudience: ['Environmental officers', 'Supervisors', 'Operations personnel', 'All offshore workers'],
     learningObjectives: [
-      'Implement effective environmental management systems',
-      'Understand emissions monitoring and reporting requirements',
-      'Master spill prevention and response procedures',
-      'Know waste management and disposal regulations',
+      'Understand SEMS requirements under SOR/2024-25',
+      'Know the $1 billion financial responsibility requirement',
+      'Master the tiered spill response system (Tier 1, 2, 3)',
+      'Understand spill reporting requirements - no minimum threshold',
+      'Know emissions monitoring and reporting requirements',
+      'Apply proper waste segregation and disposal procedures',
     ],
     certification: {
       available: true,
       name: 'Environmental Compliance Specialist Certificate',
       validityPeriod: 24,
-      accreditedBy: 'C-NLOER Environmental Standards',
+      accreditedBy: 'C-NLOER Environmental Standards - Accord Acts Compliant',
       certificateTemplate: 'template-environmental',
     },
     pricing: {
@@ -1388,22 +1972,22 @@ Cold Water Immersion (Survival Suits):
       discounts: [],
       packages: [],
     },
-    tags: ['environmental', 'compliance', 'spill-response', 'intermediate'],
+    tags: ['environmental', 'compliance', 'spill-response', 'SEMS', 'emissions', 'waste', 'intermediate'],
     featured: true,
     publishedAt: '2024-02-01',
-    updatedAt: '2024-07-01',
-    totalDuration: 240,
-    totalLessons: 16,
+    updatedAt: '2025-06-01',
+    totalDuration: 210,
+    totalLessons: 7,
     enrollmentCount: 1820,
     rating: 4.7,
     reviewCount: 245,
   },
   {
     id: 'course-003',
-    title: 'Well Control Certification Preparation',
+    title: 'Well Control & BOP Operations (SOR/2024-25)',
     slug: 'well-control-certification',
-    description: 'Comprehensive preparation for C-NLOER well control certification.',
-    longDescription: `This intensive course prepares drilling personnel for C-NLOER well control certification. Covering kick detection, well shut-in procedures, pressure control, and blowout prevention, this course combines theory with practical scenarios. Led by Mike Thompson, a veteran drilling operations supervisor with 25 years of experience.`,
+    description: 'Comprehensive well control training covering BOP operations, IWCF/IADC certification preparation, and SOR/2024-25 requirements.',
+    longDescription: `This intensive course prepares drilling personnel for well control certification under SOR/2024-25. Covering pressure fundamentals, kick detection, well shut-in procedures, BOP testing requirements (function test every 7 days, pressure test every 14 days), and IWCF/IADC certification standards. Mike Thompson, a veteran drilling operations supervisor with 25 years of experience, guides you through theory and realistic scenarios.`,
     imageUrl: '/courses/well-control.jpg',
     category: 'drilling-operations',
     level: 'advanced',
@@ -1411,7 +1995,7 @@ Cold Water Immersion (Survival Suits):
       {
         id: 'mod-003-1',
         title: 'Well Control Fundamentals',
-        description: 'Core well control concepts and principles',
+        description: 'Core well control concepts and pressure principles',
         lessons: [
           {
             id: 'les-003-1-1',
@@ -1420,82 +2004,694 @@ Cold Water Immersion (Survival Suits):
             avatarId: 'drilling-expert-mike',
             contents: [
               {
-                id: 'cont-009',
+                id: 'cont-wc-001',
                 type: 'avatar-presentation',
                 title: 'Pressure Control Basics',
                 content: 'Introduction to well pressure management',
-                avatarScript: 'Welcome to well control training. I\'m Mike Thompson, and I\'ve spent 25 years on drilling rigs. Understanding pressure is the foundation of well control. Let me explain the relationship between formation pressure, hydrostatic pressure, and how we maintain control of the well.',
-                duration: 15,
+                avatarScript: 'Welcome to well control training. I\'m Mike Thompson, and I\'ve spent 25 years on drilling rigs. Understanding pressure is the foundation of well control. The whole game is keeping the hydrostatic pressure in the wellbore greater than the formation pressure, but less than the formation fracture pressure. Get that wrong, and you\'ve got a kick - or worse.',
+                duration: 12,
+              },
+              {
+                id: 'cont-wc-002',
+                type: 'text',
+                title: 'Pressure Fundamentals',
+                content: `WELL CONTROL PRESSURE CONCEPTS:
+
+HYDROSTATIC PRESSURE:
+• Pressure exerted by a column of fluid at rest
+• Formula: HP = 0.052 × MW × TVD
+  - HP = Hydrostatic Pressure (psi)
+  - MW = Mud Weight (ppg - pounds per gallon)
+  - TVD = True Vertical Depth (feet)
+• This is our PRIMARY barrier against formation pressure
+
+FORMATION PRESSURE (Pore Pressure):
+• Pressure of fluids within rock formations
+• Normal pressure gradient: ~0.465 psi/ft
+• Abnormal pressure: Higher than normal
+• Subnormal pressure: Lower than normal
+
+FRACTURE PRESSURE:
+• Pressure at which formation will fracture
+• Must not exceed this during well control operations
+• Determines maximum allowable annular pressure
+
+THE PRESSURE BALANCE:
+For well control:
+Formation Pressure < Hydrostatic Pressure < Fracture Pressure
+
+PRIMARY WELL CONTROL:
+• Maintain hydrostatic pressure > formation pressure
+• Controlled by mud weight and column height
+• First line of defense
+
+SECONDARY WELL CONTROL:
+• Blowout Preventer (BOP) system
+• Used when primary control fails
+• Seals the wellbore mechanically
+
+TERTIARY WELL CONTROL:
+• Last resort measures
+• Relief well drilling
+• Specialized intervention`,
+                duration: 20,
               },
             ],
-            regulationSections: ['reg-003', 'reg-004'],
-            duration: 45,
+            regulationSections: ['reg-008'],
+            duration: 35,
             order: 1,
+          },
+          {
+            id: 'les-003-1-2',
+            title: 'Kick Detection and Indicators',
+            description: 'Recognizing the warning signs of a kick',
+            avatarId: 'drilling-expert-mike',
+            contents: [
+              {
+                id: 'cont-wc-003',
+                type: 'avatar-presentation',
+                title: 'Recognizing Kicks',
+                content: 'Early warning signs of well control problems',
+                avatarScript: 'A kick is formation fluid entering the wellbore when formation pressure exceeds hydrostatic pressure. The key to handling a kick is early detection. The sooner you catch it, the easier it is to control. Let me show you what to watch for - these indicators could save your life and the lives of everyone on the rig.',
+                duration: 10,
+              },
+              {
+                id: 'cont-wc-004',
+                type: 'text',
+                title: 'Kick Indicators',
+                content: `KICK WARNING SIGNS:
+
+PRIMARY INDICATORS (Direct evidence of kick):
+• Flow increase from well (most reliable indicator)
+• Pit gain (mud volume increasing)
+• Flowing well with pumps off
+• Decrease in pump pressure / increase in pump rate
+
+SECONDARY INDICATORS (May indicate kick):
+• Drilling break (sudden increase in ROP)
+• Decrease in circulating pressure
+• Change in mud properties at shakers
+• Gas cutting of mud
+• Change in drill string weight
+
+CAUSES OF KICKS:
+1. Insufficient Mud Weight
+   • Mud weight too low for formation pressure
+   • Lost circulation reducing hydrostatic column
+
+2. Failure to Keep Hole Full
+   • Tripping without proper fill-up
+   • Not accounting for pipe displacement
+
+3. Swabbing
+   • Pulling pipe too fast
+   • Creates low pressure zone below bit
+
+4. Lost Circulation
+   • Losing mud to formation
+   • Reduces hydrostatic pressure
+
+MONITORING SYSTEMS:
+• Pit Volume Totalizer (PVT)
+• Flow sensors
+• Mud loggers
+• Automated kick detection systems
+
+YOUR RESPONSIBILITY:
+EVERY driller must:
+• Continuously monitor pit levels
+• Watch flow rates
+• Report any anomalies immediately
+• Know shut-in procedures`,
+                duration: 18,
+              },
+            ],
+            regulationSections: ['reg-008'],
+            duration: 32,
+            order: 2,
           },
         ],
         quiz: {
           id: 'quiz-003-1',
           title: 'Well Control Fundamentals Quiz',
-          description: 'Test your understanding of well pressure',
+          description: 'Test your understanding of pressure and kick detection',
           questions: [
             {
-              id: 'q-007',
-              question: 'What is the primary purpose of the Blowout Preventer (BOP)?',
+              id: 'q-wc-001',
+              question: 'What is the formula for calculating hydrostatic pressure?',
               type: 'multiple-choice',
               options: [
-                'To increase drilling speed',
-                'To seal the wellbore and control well pressure',
-                'To measure formation pressure',
-                'To clean drilling mud',
+                'HP = MW × TVD × 0.433',
+                'HP = 0.052 × MW × TVD',
+                'HP = TVD / (MW × 0.052)',
+                'HP = MW / TVD',
               ],
-              correctAnswer: 'To seal the wellbore and control well pressure',
-              explanation: 'The BOP is critical safety equipment designed to seal the wellbore and prevent uncontrolled flow.',
-              avatarExplanation: 'The Blowout Preventer is our last line of defense against an uncontrolled well. It can seal around the drill pipe or completely close off the wellbore if needed. Understanding BOP operation is absolutely critical for anyone working in drilling operations. These devices have saved countless lives.',
-              regulationReference: 'reg-003',
+              correctAnswer: 'HP = 0.052 × MW × TVD',
+              explanation: 'Hydrostatic Pressure (psi) = 0.052 × Mud Weight (ppg) × True Vertical Depth (feet).',
+              avatarExplanation: 'This formula is fundamental to well control. The constant 0.052 converts the mud weight in pounds per gallon and depth in feet to pressure in psi. You\'ll use this calculation frequently to determine if your mud weight provides adequate hydrostatic pressure.',
+              regulationReference: 'reg-008',
               difficulty: 'advanced',
-              points: 25,
+              points: 20,
             },
             {
-              id: 'q-008',
-              question: 'How often must BOP pressure testing be conducted according to C-NLOER requirements?',
+              id: 'q-wc-002',
+              question: 'What is the MOST reliable primary indicator of a kick?',
               type: 'multiple-choice',
               options: [
-                'Daily',
-                'Weekly',
-                'At specified intervals per the drilling program',
-                'Only when a problem is suspected',
+                'Drilling break',
+                'Flow increase / pit gain',
+                'Gas cutting of mud',
+                'Decrease in pump pressure',
               ],
-              correctAnswer: 'At specified intervals per the drilling program',
-              explanation: 'C-NLOER requires BOP testing at intervals specified in the approved drilling program.',
-              avatarExplanation: 'BOP testing frequency is determined by the approved drilling program, which considers the specific conditions of each well. However, the regulations are clear that this testing must be documented and must meet specified pressure thresholds. Never skip or delay a BOP test - this equipment must be reliable when we need it most.',
-              regulationReference: 'reg-003',
-              difficulty: 'advanced',
-              points: 25,
+              correctAnswer: 'Flow increase / pit gain',
+              explanation: 'An increase in flow from the well or gain in pit volume is the most reliable indicator that formation fluid is entering the wellbore.',
+              avatarExplanation: 'When you see more fluid coming out of the hole than you\'re putting in, that\'s formation fluid entering your wellbore - that\'s a kick. Pit gain is direct evidence. Other indicators like drilling breaks can have multiple causes, but a pit gain while circulating is almost always a kick.',
+              regulationReference: 'reg-008',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-wc-003',
+              question: 'What happens during "swabbing"?',
+              type: 'multiple-choice',
+              options: [
+                'Formation fluid is pumped into the well',
+                'Mud weight is increased',
+                'Pulling pipe creates suction that reduces bottomhole pressure',
+                'The BOP is tested',
+              ],
+              correctAnswer: 'Pulling pipe creates suction that reduces bottomhole pressure',
+              explanation: 'Swabbing occurs when pipe is pulled too fast, creating a suction effect that reduces bottomhole pressure and can allow formation fluid to enter.',
+              avatarExplanation: 'Think of it like pulling a plunger. When you pull pipe out too fast, especially with tight annular clearance, you create a suction effect. This temporarily reduces pressure at the bottom of the hole. If that reduced pressure goes below formation pressure, you\'ll swab in a kick. That\'s why controlled tripping speed is critical.',
+              regulationReference: 'reg-008',
+              difficulty: 'intermediate',
+              points: 15,
             },
           ],
-          passingScore: 85,
-          timeLimit: 30,
-          attemptsAllowed: 2,
+          passingScore: 80,
+          timeLimit: 20,
+          attemptsAllowed: 3,
           avatarId: 'drilling-expert-mike',
         },
         order: 1,
-        estimatedTime: 120,
+        estimatedTime: 75,
         prerequisites: [],
+      },
+      {
+        id: 'mod-003-2',
+        title: 'Blowout Preventer Systems',
+        description: 'BOP components, operation, and testing requirements',
+        lessons: [
+          {
+            id: 'les-003-2-1',
+            title: 'BOP Components and Operation',
+            description: 'Understanding BOP stack configuration',
+            avatarId: 'drilling-expert-mike',
+            contents: [
+              {
+                id: 'cont-wc-005',
+                type: 'avatar-presentation',
+                title: 'BOP Systems',
+                content: 'Understanding your blowout preventer',
+                avatarScript: 'The Blowout Preventer is the most critical piece of safety equipment on a drilling rig. It\'s our last line of defense when primary well control fails. Under SOR/2024-25, the BOP must be rated for maximum anticipated surface pressure and include specific components. Let me walk you through the system.',
+                duration: 10,
+              },
+              {
+                id: 'cont-wc-006',
+                type: 'text',
+                title: 'BOP System Components',
+                content: `BLOWOUT PREVENTER SYSTEMS (SOR/2024-25 Part 5):
+
+SURFACE BOP STACK - Minimum Components:
+• Annular Preventer
+• Pipe Rams (at least 2 sets)
+• Blind/Shear Rams
+
+ANNULAR PREVENTER:
+• Rubber sealing element
+• Can seal around any size pipe
+• Can seal open hole (no pipe)
+• Primary closing mechanism in most situations
+
+PIPE RAMS:
+• Sized to specific pipe diameter
+• Close around drill pipe to seal annulus
+• Multiple sets for different pipe sizes
+• Can hang off drill string
+
+BLIND RAMS (CSO - Complete Shut Off):
+• Close when no pipe in hole
+• Seal open hole completely
+
+SHEAR RAMS / BLIND SHEAR RAMS:
+• Can cut drill pipe
+• Seal wellbore after cutting
+• Last resort for emergency disconnect
+• BSR - seals after shearing
+
+SUBSEA BOP REQUIREMENTS:
+• All surface stack components PLUS:
+• Redundant control systems
+• Acoustic/ROV backup activation
+• Emergency disconnect system (EDS)
+• Lower marine riser package (LMRP)
+
+BOP CONTROL SYSTEM:
+• Hydraulic control system
+• Accumulator capacity for multiple closures
+• Control panels at multiple locations
+• Emergency backup systems`,
+                duration: 18,
+              },
+            ],
+            regulationSections: ['reg-008'],
+            duration: 32,
+            order: 1,
+          },
+          {
+            id: 'les-003-2-2',
+            title: 'BOP Testing Requirements',
+            description: 'Regulatory testing frequencies and procedures',
+            avatarId: 'drilling-expert-mike',
+            contents: [
+              {
+                id: 'cont-wc-007',
+                type: 'avatar-presentation',
+                title: 'Testing Requirements',
+                content: 'BOP testing under SOR/2024-25',
+                avatarScript: 'BOP testing isn\'t optional - it\'s required by regulation and it could save your life. Under SOR/2024-25, we have specific testing frequencies: function tests every 7 days, pressure tests every 14 days. These aren\'t suggestions - they\'re requirements. Let me explain exactly what\'s required.',
+                duration: 8,
+              },
+              {
+                id: 'cont-wc-008',
+                type: 'text',
+                title: 'BOP Testing Requirements (SOR/2024-25)',
+                content: `BOP TESTING REQUIREMENTS:
+
+FUNCTION TEST - Every 7 Days:
+• Operate each BOP component
+• Verify proper function
+• Check control system response
+• Document results
+
+PRESSURE TEST - Every 14 Days:
+• Initial test: Full rated working pressure
+• Subsequent tests: 70% of rated working pressure
+• Must also test after:
+  - BOP disconnection
+  - Ram changes
+  - Any component repair
+  - When required by drilling program
+
+PRESSURE TEST PROCEDURE:
+1. Install test tool/plug
+2. Close component to be tested
+3. Apply test pressure
+4. Hold for specified duration (typically 5-10 minutes)
+5. Observe for pressure decay
+6. Document test results
+
+ACCEPTANCE CRITERIA:
+• No visible leaks
+• Pressure decay within acceptable limits
+• All sealing surfaces functional
+
+DOCUMENTATION REQUIREMENTS:
+All tests must be documented with:
+• Date and time
+• Components tested
+• Test pressure
+• Duration of test
+• Results (pass/fail)
+• Signature of responsible person
+
+FAILURE RESPONSE:
+If BOP fails test:
+• Immediately notify supervisor
+• Do NOT continue drilling
+• Repair and retest before operations resume
+• Document all repairs
+
+WELL CONTROL DRILLS:
+• Kick drills: Weekly minimum
+• All drilling crew must participate
+• Drills documented with evaluation`,
+                duration: 18,
+              },
+            ],
+            regulationSections: ['reg-008'],
+            duration: 30,
+            order: 2,
+          },
+        ],
+        quiz: {
+          id: 'quiz-003-2',
+          title: 'BOP Systems Quiz',
+          description: 'Test your BOP knowledge',
+          questions: [
+            {
+              id: 'q-wc-004',
+              question: 'How often must BOP function tests be conducted under SOR/2024-25?',
+              type: 'multiple-choice',
+              options: [
+                'Daily',
+                'Every 7 days',
+                'Every 14 days',
+                'Monthly',
+              ],
+              correctAnswer: 'Every 7 days',
+              explanation: 'BOP function tests must be conducted every 7 days under SOR/2024-25.',
+              avatarExplanation: 'Function tests every 7 days - that\'s weekly. This verifies each component operates correctly. Pressure tests are every 14 days. Don\'t confuse the two. Function tests check that everything moves and operates; pressure tests verify the sealing capability under pressure.',
+              regulationReference: 'reg-008',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-wc-005',
+              question: 'What pressure must be used for subsequent BOP pressure tests (after the initial full-pressure test)?',
+              type: 'multiple-choice',
+              options: [
+                '50% of rated working pressure',
+                '70% of rated working pressure',
+                '90% of rated working pressure',
+                '100% of rated working pressure',
+              ],
+              correctAnswer: '70% of rated working pressure',
+              explanation: 'After the initial full-pressure test, subsequent tests are conducted at 70% of rated working pressure.',
+              avatarExplanation: 'The initial test is at full rated working pressure to verify the equipment can handle maximum anticipated conditions. After that, 70% is used for routine tests. This reduces wear on the equipment while still providing adequate verification. But remember - the equipment must still be capable of full pressure operation.',
+              regulationReference: 'reg-008',
+              difficulty: 'advanced',
+              points: 20,
+            },
+            {
+              id: 'q-wc-006',
+              question: 'What is the primary purpose of the Blind Shear Rams (BSR)?',
+              type: 'multiple-choice',
+              options: [
+                'To seal around the drill pipe',
+                'To cut the drill pipe and seal the wellbore',
+                'To measure formation pressure',
+                'To circulate mud',
+              ],
+              correctAnswer: 'To cut the drill pipe and seal the wellbore',
+              explanation: 'Blind Shear Rams can cut through drill pipe and then seal the wellbore - used as a last resort emergency measure.',
+              avatarExplanation: 'The BSR is our last line of defense. If we can\'t control the well with the pipe in the hole, the BSR will cut right through it and seal the well. This is an emergency measure - once you shear the pipe, you\'ve lost your string. But it\'s better than a blowout. That\'s why these are so critical on subsea BOPs.',
+              regulationReference: 'reg-008',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-wc-007',
+              question: 'How often must well control (kick) drills be conducted?',
+              type: 'multiple-choice',
+              options: [
+                'Daily',
+                'Weekly minimum',
+                'Monthly',
+                'Quarterly',
+              ],
+              correctAnswer: 'Weekly minimum',
+              explanation: 'Kick drills must be conducted at least weekly with all drilling crew participating.',
+              avatarExplanation: 'Weekly kick drills at minimum. Everyone on the drilling crew must participate and know their role. When a real kick happens, you don\'t have time to think - your response must be automatic. That only comes from practice. The drills must be documented with evaluation of performance.',
+              regulationReference: 'reg-008',
+              difficulty: 'beginner',
+              points: 10,
+            },
+          ],
+          passingScore: 80,
+          timeLimit: 18,
+          attemptsAllowed: 3,
+          avatarId: 'drilling-expert-mike',
+        },
+        order: 2,
+        estimatedTime: 70,
+        prerequisites: ['mod-003-1'],
+      },
+      {
+        id: 'mod-003-3',
+        title: 'Well Shut-In Procedures',
+        description: 'Proper shut-in techniques and kill procedures',
+        lessons: [
+          {
+            id: 'les-003-3-1',
+            title: 'Shut-In Procedures',
+            description: 'How to properly shut in a well',
+            avatarId: 'drilling-expert-mike',
+            contents: [
+              {
+                id: 'cont-wc-009',
+                type: 'avatar-presentation',
+                title: 'Shut-In Methods',
+                content: 'Proper well shut-in techniques',
+                avatarScript: 'When a kick is detected, the well must be shut in as quickly as possible to minimize the amount of influx. There are two main methods - soft shut-in and hard shut-in. Each has its place. Let me explain when to use each and how to execute them properly.',
+                duration: 10,
+              },
+              {
+                id: 'cont-wc-010',
+                type: 'text',
+                title: 'Shut-In Procedures',
+                content: `WELL SHUT-IN PROCEDURES:
+
+SOFT SHUT-IN (Preferred method):
+1. Stop rotary
+2. Pick up off bottom (if drilling)
+3. Stop pumps
+4. Open HCR (Hydraulic Control Remote) line
+5. Close annular or pipe rams
+6. Close choke
+7. Record SIDPP and SICP
+
+Advantage: Minimizes pressure surge
+Use when: Time permits, normal operations
+
+HARD SHUT-IN:
+1. Stop rotary and pumps simultaneously
+2. Close BOP immediately (annular or rams)
+3. Close choke
+4. Record pressures
+
+Advantage: Faster - minimizes influx volume
+Use when: Large kick, emergency situation
+
+RECORDING PRESSURES:
+SIDPP - Shut-In Drill Pipe Pressure
+• Indicates formation pressure (when influx at bit)
+• Used to calculate kill mud weight
+
+SICP - Shut-In Casing Pressure
+• Indicates pressure on annular side
+• Higher than SIDPP due to lighter influx
+
+SHUT-IN CHECKS:
+• Verify well is shut in (no flow)
+• Record pressures at 1-minute intervals
+• Allow pressures to stabilize
+• Calculate kill mud weight
+• Prepare for kill operation
+
+DO NOT:
+• Open the well to check if kick is real
+• Delay shut-in while investigating
+• Exceed maximum allowable casing pressure`,
+                duration: 18,
+              },
+            ],
+            regulationSections: ['reg-008'],
+            duration: 32,
+            order: 1,
+          },
+        ],
+        quiz: {
+          id: 'quiz-003-3',
+          title: 'Shut-In Procedures Quiz',
+          description: 'Test your shut-in knowledge',
+          questions: [
+            {
+              id: 'q-wc-008',
+              question: 'What does SIDPP stand for?',
+              type: 'multiple-choice',
+              options: [
+                'Standard Internal Drilling Pump Pressure',
+                'Shut-In Drill Pipe Pressure',
+                'System Indicated Differential Pipe Pressure',
+                'Safety Integrated Drilling Pressure Protocol',
+              ],
+              correctAnswer: 'Shut-In Drill Pipe Pressure',
+              explanation: 'SIDPP is Shut-In Drill Pipe Pressure, which indicates formation pressure when the influx is at the bit.',
+              avatarExplanation: 'SIDPP - Shut-In Drill Pipe Pressure - is one of the most important numbers in well control. When you shut in with the bit on bottom and the influx hasn\'t migrated up, the SIDPP tells you the formation pressure. You use this to calculate your kill mud weight.',
+              regulationReference: 'reg-008',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-wc-009',
+              question: 'When is a hard shut-in preferred over a soft shut-in?',
+              type: 'multiple-choice',
+              options: [
+                'During normal drilling operations',
+                'When there is a large kick or emergency situation',
+                'When testing the BOP',
+                'During tripping operations only',
+              ],
+              correctAnswer: 'When there is a large kick or emergency situation',
+              explanation: 'Hard shut-in is faster and preferred when a large kick is detected or in emergency situations to minimize influx volume.',
+              avatarExplanation: 'Hard shut-in is faster - you\'re closing in immediately without the extra steps. The downside is it creates a pressure surge. But when you\'ve got a significant kick or an emergency, getting that well closed quickly is more important than avoiding a pressure spike. Minimize influx volume - that\'s the priority.',
+              regulationReference: 'reg-008',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+          ],
+          passingScore: 80,
+          timeLimit: 12,
+          attemptsAllowed: 3,
+          avatarId: 'drilling-expert-mike',
+        },
+        order: 3,
+        estimatedTime: 40,
+        prerequisites: ['mod-003-2'],
+      },
+      {
+        id: 'mod-003-4',
+        title: 'Certification Requirements',
+        description: 'IWCF and IADC certification standards',
+        lessons: [
+          {
+            id: 'les-003-4-1',
+            title: 'Well Control Certification',
+            description: 'IWCF and IADC certification requirements',
+            avatarId: 'drilling-expert-mike',
+            contents: [
+              {
+                id: 'cont-wc-011',
+                type: 'avatar-presentation',
+                title: 'Certification Standards',
+                content: 'Understanding well control certification',
+                avatarScript: 'Under SOR/2024-25, personnel in well control positions must hold valid certification from either IWCF or IADC. These aren\'t optional credentials - they\'re regulatory requirements. Let me explain the certification levels and what\'s expected.',
+                duration: 8,
+              },
+              {
+                id: 'cont-wc-012',
+                type: 'text',
+                title: 'Certification Requirements (SOR/2024-25)',
+                content: `WELL CONTROL CERTIFICATION REQUIREMENTS:
+
+RECOGNIZED CERTIFYING BODIES:
+• IWCF (International Well Control Forum)
+• IADC (International Association of Drilling Contractors)
+
+IWCF CERTIFICATION LEVELS:
+Level 2 - Driller/Supervisory
+• For drillers, assistant drillers, toolpushers
+• Well control responsibilities at rig floor
+• 2-year validity
+
+Level 3 - Superintendent
+• For drilling superintendents, OIMs
+• Overall drilling operations oversight
+• 2-year validity
+
+Level 4 - Engineer
+• For drilling engineers
+• Well design and planning
+• 2-year validity
+
+CERTIFICATION REQUIREMENTS:
+• Must hold appropriate level for position
+• Certificate must be current (2-year validity)
+• Recertification required before expiry
+• Training at accredited center
+
+SURFACE vs SUBSEA ENDORSEMENTS:
+• Surface: For land and platform operations
+• Subsea: For operations with subsea BOPs
+• Combined: Both endorsements
+
+COMPETENCY VERIFICATION:
+Operators must:
+• Verify certifications before employment
+• Track certificate expiry dates
+• Ensure recertification is completed
+• Maintain competency records
+
+PRACTICAL ASSESSMENT:
+Certification includes:
+• Written examination
+• Practical simulation exercises
+• Kill sheet calculations
+• Shut-in procedures demonstration`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-008', 'reg-009'],
+            duration: 25,
+            order: 1,
+          },
+        ],
+        quiz: {
+          id: 'quiz-003-4',
+          title: 'Certification Requirements Quiz',
+          description: 'Test your certification knowledge',
+          questions: [
+            {
+              id: 'q-wc-010',
+              question: 'How long is an IWCF well control certificate valid?',
+              type: 'multiple-choice',
+              options: [
+                '1 year',
+                '2 years',
+                '3 years',
+                '5 years',
+              ],
+              correctAnswer: '2 years',
+              explanation: 'IWCF certificates are valid for 2 years and must be renewed before expiry.',
+              avatarExplanation: '2 years - that\'s it. Well control skills need to be kept current. Technology changes, procedures update, and skills can get rusty. Recertification ensures everyone stays sharp. Don\'t wait until the last minute to recertify - book your course well in advance.',
+              regulationReference: 'reg-008',
+              difficulty: 'beginner',
+              points: 10,
+            },
+            {
+              id: 'q-wc-011',
+              question: 'Which certification level is required for drillers and assistant drillers?',
+              type: 'multiple-choice',
+              options: [
+                'Level 1',
+                'Level 2',
+                'Level 3',
+                'Level 4',
+              ],
+              correctAnswer: 'Level 2',
+              explanation: 'Level 2 certification is required for drillers, assistant drillers, and toolpushers.',
+              avatarExplanation: 'Level 2 is the driller/supervisory level - that covers drillers, assistant drillers, and toolpushers. These are the people making hands-on well control decisions at the rig floor. Level 3 is for superintendents with oversight responsibility, and Level 4 is for engineers doing design work.',
+              regulationReference: 'reg-008',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+          ],
+          passingScore: 80,
+          timeLimit: 10,
+          attemptsAllowed: 3,
+          avatarId: 'drilling-expert-mike',
+        },
+        order: 4,
+        estimatedTime: 30,
+        prerequisites: ['mod-003-3'],
       },
     ],
     instructorAvatarId: 'drilling-expert-mike',
-    targetAudience: ['Drilling personnel', 'Well control specialists', 'Toolpushers'],
+    targetAudience: ['Drilling personnel', 'Well control specialists', 'Toolpushers', 'Drilling engineers', 'Assistant drillers'],
     learningObjectives: [
-      'Master well pressure control principles',
-      'Understand kick detection and response',
-      'Learn proper well shut-in procedures',
-      'Prepare for C-NLOER well control certification exam',
+      'Master pressure fundamentals and the hydrostatic pressure formula',
+      'Recognize kick indicators and understand causes of kicks',
+      'Know BOP components and their functions',
+      'Understand BOP testing requirements (7-day function, 14-day pressure)',
+      'Execute proper soft and hard shut-in procedures',
+      'Prepare for IWCF/IADC certification examination',
     ],
     certification: {
       available: true,
       name: 'Well Control Competency Certificate',
-      validityPeriod: 12,
-      accreditedBy: 'C-NLOER Drilling Standards',
+      validityPeriod: 24,
+      accreditedBy: 'C-NLOER Drilling Standards - SOR/2024-25 Compliant',
       certificateTemplate: 'template-well-control',
     },
     pricing: {
@@ -1505,58 +2701,181 @@ Cold Water Immersion (Survival Suits):
       discounts: [],
       packages: [],
     },
-    tags: ['well-control', 'drilling', 'certification', 'advanced', 'bop'],
+    tags: ['well-control', 'drilling', 'BOP', 'IWCF', 'IADC', 'certification', 'advanced'],
     featured: true,
     publishedAt: '2024-01-15',
-    updatedAt: '2024-08-01',
-    totalDuration: 480,
-    totalLessons: 24,
+    updatedAt: '2025-06-01',
+    totalDuration: 240,
+    totalLessons: 6,
     enrollmentCount: 890,
     rating: 4.9,
     reviewCount: 156,
   },
   {
     id: 'course-004',
-    title: 'Emergency Response and Evacuation',
+    title: 'Emergency Response & Evacuation (SOR/2021-247 Part 12)',
     slug: 'emergency-response-evacuation',
-    description: 'Complete training on offshore emergency procedures and evacuation protocols.',
-    longDescription: `Learn life-saving emergency response procedures for offshore installations. This course covers fire response, evacuation procedures, muster drills, survival craft operation, and emergency communication. Captain Sarah Mitchell brings decades of offshore installation management experience to guide you through realistic emergency scenarios.`,
+    description: 'Complete training on offshore emergency procedures, drill requirements, and evacuation protocols under SOR/2021-247 Part 12.',
+    longDescription: `Learn life-saving emergency response procedures mandated under SOR/2021-247 Part 12. This course covers emergency types (fire, blowout, H2S, helicopter ditching, person overboard), muster procedures, evacuation routes, Temporary Refuge, and required drill frequencies (muster weekly, fire monthly, abandonment every 6 months). Captain Sarah Mitchell guides you through realistic scenarios with regulatory compliance.`,
     imageUrl: '/courses/emergency-response.jpg',
     category: 'emergency-response',
     level: 'all-levels',
     modules: [
       {
         id: 'mod-004-1',
-        title: 'Emergency Preparedness',
-        description: 'Being ready for emergencies',
+        title: 'Emergency Preparedness Framework',
+        description: 'Understanding emergency response requirements under SOR/2021-247',
         lessons: [
           {
             id: 'les-004-1-1',
             title: 'Types of Offshore Emergencies',
-            description: 'Understanding different emergency scenarios',
+            description: 'Categories of emergencies and required response plans',
             avatarId: 'captain-sarah',
             contents: [
               {
-                id: 'cont-010',
+                id: 'cont-er-001',
                 type: 'avatar-presentation',
                 title: 'Emergency Overview',
-                content: 'Types of emergencies on offshore installations',
-                avatarScript: 'I\'m Captain Sarah Mitchell, and as an Offshore Installation Manager, emergency preparedness is my top priority. Every person on this installation needs to know how to respond when an alarm sounds. Let\'s start by understanding the types of emergencies we might face.',
+                content: 'Types of emergencies covered by regulations',
+                avatarScript: 'I\'m Captain Sarah Mitchell, and as an Offshore Installation Manager, emergency preparedness is my top priority. Under SOR/2021-247 Part 12, every operator must have documented emergency response plans for specific types of emergencies. Every person on this installation needs to know how to respond. Let me walk you through what we\'re required to prepare for.',
                 duration: 10,
+              },
+              {
+                id: 'cont-er-002',
+                type: 'text',
+                title: 'Emergency Types (SOR/2021-247 Part 12)',
+                content: `EMERGENCY RESPONSE PLAN REQUIREMENTS:
+
+Every operator must have documented plans for:
+
+1. FIRE AND EXPLOSION
+   • Detection and alarm systems
+   • Firefighting procedures
+   • Fire team organization
+   • Escape routes from fire zones
+
+2. BLOWOUT / LOSS OF WELL CONTROL
+   • Well control emergency procedures
+   • Ignition prevention
+   • Coordination with drilling operations
+   • Evacuation triggers
+
+3. HAZARDOUS SUBSTANCE RELEASE
+   • H2S (hydrogen sulfide) release
+   • Chemical spills
+   • Gas detection systems
+   • Respiratory protection procedures
+
+4. STRUCTURAL FAILURE / VESSEL COLLISION
+   • Damage assessment procedures
+   • Stability monitoring
+   • Evacuation decisions
+
+5. SEVERE WEATHER / ENVIRONMENTAL
+   • Weather monitoring
+   • Securing operations
+   • Personnel protection
+   • Evacuation criteria
+
+6. MEDICAL EMERGENCIES
+   • First response procedures
+   • Medical evacuation (medevac)
+   • Mass casualty response
+
+7. HELICOPTER DITCHING / CRASH
+   • Helideck emergency response
+   • Search and rescue coordination
+   • Survivor recovery
+
+8. PERSON OVERBOARD
+   • Man overboard procedures
+   • Search patterns
+   • Rescue craft deployment
+
+EMERGENCY ORGANIZATION:
+• Clear command structure
+• Defined roles and responsibilities
+• Backup positions identified
+• Communication protocols`,
+                duration: 18,
               },
             ],
             regulationSections: ['reg-006'],
-            duration: 30,
+            duration: 32,
             order: 1,
+          },
+          {
+            id: 'les-004-1-2',
+            title: 'Alarm Systems and Response',
+            description: 'Understanding alarm types and required responses',
+            avatarId: 'captain-sarah',
+            contents: [
+              {
+                id: 'cont-er-003',
+                type: 'avatar-presentation',
+                title: 'Alarm Response',
+                content: 'Knowing your alarm signals',
+                avatarScript: 'When an alarm sounds, you need to know exactly what it means and what to do. There\'s no time to think - your response must be automatic. Different alarms require different responses. Let\'s make sure you know them all.',
+                duration: 8,
+              },
+              {
+                id: 'cont-er-004',
+                type: 'text',
+                title: 'Alarm Types and Responses',
+                content: `OFFSHORE ALARM SYSTEMS:
+
+GENERAL ALARM (GA):
+• Sound: Continuous siren/horn
+• Meaning: Emergency - proceed to muster
+• Response: Stop work safely, proceed immediately to muster station
+• Do NOT use elevators
+
+FIRE ALARM:
+• Sound: Intermittent horn or bells
+• Meaning: Fire detected in specific area
+• Response: If in fire area - evacuate via safe route. If elsewhere - prepare to respond or muster as directed
+
+ABANDON PLATFORM ALARM:
+• Sound: 7 short + 1 long blast (repeated)
+• Meaning: Prepare to evacuate installation
+• Response: Proceed to assigned lifeboat station with survival suit
+
+GAS ALARM / H2S:
+• Sound: Distinctive warbling tone
+• Visual: Flashing lights in affected areas
+• Response: Don breathing apparatus, evacuate to safe area upwind, muster as directed
+
+MAN OVERBOARD:
+• Sound: 3 long blasts
+• Response: All personnel report to muster, rescue team deploys
+
+ALL CLEAR:
+• Continuous steady tone
+• Meaning: Emergency is over
+• Response: Wait for instruction before resuming work
+
+YOUR FIRST RESPONSE TO ANY ALARM:
+1. Stop what you're doing safely
+2. Secure any hazardous operations
+3. Listen for PA announcements
+4. Proceed to appropriate location
+5. Do NOT use elevators
+6. Account for yourself at muster`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-006'],
+            duration: 26,
+            order: 2,
           },
         ],
         quiz: {
           id: 'quiz-004-1',
           title: 'Emergency Preparedness Quiz',
-          description: 'Test your emergency knowledge',
+          description: 'Test your emergency response knowledge',
           questions: [
             {
-              id: 'q-009',
+              id: 'q-er-001',
               question: 'What should you do when you hear the general alarm on an offshore installation?',
               type: 'multiple-choice',
               options: [
@@ -1567,10 +2886,44 @@ Cold Water Immersion (Survival Suits):
               ],
               correctAnswer: 'Proceed immediately to your designated muster station',
               explanation: 'When the general alarm sounds, immediate response to your muster station is required.',
-              avatarExplanation: 'When that alarm sounds, every second counts. Don\'t wait, don\'t call for instructions, don\'t collect belongings. Go directly to your muster station. This is drilled into us for a reason - in a real emergency, a few seconds delay could mean the difference between getting off the installation safely or not. Know your muster station and the quickest route there.',
+              avatarExplanation: 'When that alarm sounds, every second counts. Don\'t wait, don\'t call for instructions, don\'t collect belongings. Go directly to your muster station. This is drilled into us for a reason - in a real emergency, a few seconds delay could mean the difference between getting off the installation safely or not.',
               regulationReference: 'reg-006',
               difficulty: 'beginner',
-              points: 20,
+              points: 15,
+            },
+            {
+              id: 'q-er-002',
+              question: 'What is the abandon platform alarm signal?',
+              type: 'multiple-choice',
+              options: [
+                'Continuous siren',
+                '7 short blasts followed by 1 long blast (repeated)',
+                '3 long blasts',
+                'Intermittent bells',
+              ],
+              correctAnswer: '7 short blasts followed by 1 long blast (repeated)',
+              explanation: 'The abandon platform signal is 7 short blasts followed by 1 long blast, repeated.',
+              avatarExplanation: 'This is the international abandon ship signal - 7 short and 1 long. When you hear this, it means we\'re leaving the installation. Proceed immediately to your assigned lifeboat station with your survival suit. This is serious - there\'s no drill announcement for this signal.',
+              regulationReference: 'reg-006',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-er-003',
+              question: 'When a gas alarm sounds, which direction should you evacuate?',
+              type: 'multiple-choice',
+              options: [
+                'Toward the accommodation',
+                'Upwind of the affected area',
+                'Downwind of the affected area',
+                'Stay in place until given instructions',
+              ],
+              correctAnswer: 'Upwind of the affected area',
+              explanation: 'Always evacuate upwind (into the wind) from a gas release so the gas blows away from you.',
+              avatarExplanation: 'Gas travels with the wind. If you go downwind, you\'re walking into the gas cloud. Always move upwind - that means the wind is blowing in your face, pushing the gas away from you. Know the wind direction at all times. Windsocks are positioned around the installation for this reason.',
+              regulationReference: 'reg-006',
+              difficulty: 'intermediate',
+              points: 15,
             },
           ],
           passingScore: 80,
@@ -1579,23 +2932,454 @@ Cold Water Immersion (Survival Suits):
           avatarId: 'captain-sarah',
         },
         order: 1,
-        estimatedTime: 60,
+        estimatedTime: 65,
         prerequisites: [],
+      },
+      {
+        id: 'mod-004-2',
+        title: 'Muster and Evacuation Procedures',
+        description: 'Muster stations, evacuation routes, and Temporary Refuge',
+        lessons: [
+          {
+            id: 'les-004-2-1',
+            title: 'Muster Procedures',
+            description: 'How mustering works and your responsibilities',
+            avatarId: 'captain-sarah',
+            contents: [
+              {
+                id: 'cont-er-005',
+                type: 'avatar-presentation',
+                title: 'Mustering',
+                content: 'Understanding the muster process',
+                avatarScript: 'Mustering is how we account for everyone during an emergency. You have an assigned muster station - you must know where it is. When you arrive, you check in with the muster checker who records that you\'re safe. Until everyone is accounted for, we can\'t make good decisions about evacuation or rescue.',
+                duration: 10,
+              },
+              {
+                id: 'cont-er-006',
+                type: 'text',
+                title: 'Muster Station Procedures',
+                content: `MUSTER STATION PROCEDURES:
+
+YOUR MUSTER STATION:
+• Assigned based on your cabin/work location
+• Listed on your cabin card and station bill
+• KNOW IT - don't rely on finding someone to follow
+
+WHEN ALARM SOUNDS:
+1. Stop work safely
+2. Secure immediate hazards if safe
+3. Proceed directly to your muster station
+4. Do NOT use elevators
+5. Do NOT collect personal belongings
+6. Assist others if safe to do so
+
+AT THE MUSTER STATION:
+1. Report to the Muster Checker
+2. Give your name clearly
+3. Report anyone missing that you know about
+4. Report any injuries or medical needs
+5. Await instructions - stay calm
+6. Do NOT leave without permission
+
+POB (Personnel On Board):
+• Total count of everyone on installation
+• Must match muster count
+• Unaccounted personnel trigger search
+
+MUSTER CHECKERS:
+• Assigned personnel who take roll
+• Report count to OIM/Control Room
+• Coordinate with emergency team
+
+VISITORS AND CONTRACTORS:
+• Assigned muster station on arrival
+• Paired with experienced worker if possible
+• Host responsible for their safety`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-006'],
+            duration: 28,
+            order: 1,
+          },
+          {
+            id: 'les-004-2-2',
+            title: 'Temporary Refuge (TR)',
+            description: 'Understanding the role of Temporary Refuge',
+            avatarId: 'captain-sarah',
+            contents: [
+              {
+                id: 'cont-er-007',
+                type: 'avatar-presentation',
+                title: 'Temporary Refuge',
+                content: 'The safe haven during emergencies',
+                avatarScript: 'The Temporary Refuge - or TR - is a protected area designed to give us time during an emergency. It\'s not where we stay forever, but it gives the emergency response team time to assess the situation and organize evacuation if needed. The TR has protected air supply, communications, and can withstand fire and blast for a specified period.',
+                duration: 10,
+              },
+              {
+                id: 'cont-er-008',
+                type: 'text',
+                title: 'Temporary Refuge Concept',
+                content: `TEMPORARY REFUGE (TR):
+
+PURPOSE:
+• Provide safe area during emergency assessment
+• Allow time for organized evacuation
+• Protect personnel from immediate hazards
+• Enable emergency command and control
+
+TR FEATURES:
+• Blast and fire resistant construction
+• Positive pressure ventilation (keeps smoke out)
+• Emergency air supply capability
+• Communications equipment
+• Monitoring of conditions outside
+• Survival equipment available
+
+TR LOCATION:
+• Usually the accommodation/living quarters
+• Clearly marked
+• Multiple access routes
+
+TIME RATING:
+• TR designed to protect for specified duration
+• Typically rated for fire/blast scenarios
+• Allows time for:
+  - Assessment of emergency
+  - Organization of evacuation
+  - Arrival of external assistance
+
+WHEN IN TR:
+• Await instructions from OIM
+• Stay calm - the TR is protecting you
+• Monitor announcements
+• Be prepared to evacuate if ordered
+
+LEAVING THE TR:
+• Only when ordered by OIM
+• Or if TR integrity is compromised
+• Proceed to evacuation points as directed`,
+                duration: 15,
+              },
+            ],
+            regulationSections: ['reg-006'],
+            duration: 28,
+            order: 2,
+          },
+          {
+            id: 'les-004-2-3',
+            title: 'Evacuation Methods',
+            description: 'Lifeboats, life rafts, and other evacuation means',
+            avatarId: 'captain-sarah',
+            contents: [
+              {
+                id: 'cont-er-009',
+                type: 'avatar-presentation',
+                title: 'Evacuation Options',
+                content: 'How we get off the installation',
+                avatarScript: 'When evacuation is ordered, we have several options depending on the situation. Primary evacuation is by helicopter when conditions permit. If that\'s not possible, we use lifeboats - totally enclosed and designed to launch even in fire conditions. Life rafts are backup. And as a last resort, we have escape routes to the water with personal flotation.',
+                duration: 10,
+              },
+              {
+                id: 'cont-er-010',
+                type: 'text',
+                title: 'Evacuation Methods',
+                content: `EVACUATION METHODS:
+
+PRIMARY: HELICOPTER
+• Preferred method when conditions allow
+• Weather dependent
+• Not available in all emergencies (fire on helideck)
+• Medevac for medical emergencies
+
+SECONDARY: LIFEBOATS
+• Totally Enclosed Motor Propelled Survival Craft (TEMPSC)
+• Self-righting capability
+• Fire protected - can launch through fire
+• Fitted with:
+  - Engine and fuel
+  - Food and water
+  - First aid
+  - Radio and EPIRB
+  - Protection from elements
+
+LIFEBOAT STATIONS:
+• Know your assigned lifeboat
+• Know location and route
+• Understand boarding procedures
+• Capacity marked on each boat
+
+LIFE RAFTS:
+• Backup to lifeboats
+• Inflatable - deployed manually or auto-float
+• Less protection than lifeboats
+• Use if lifeboats not accessible
+
+ESCAPE TO SEA:
+• Last resort option
+• Jump/ladder to water
+• Personal flotation required
+• Swim clear of installation
+
+RESCUE:
+• Standby vessel always on station
+• Fast Rescue Craft (FRC) capability
+• Helicopter SAR if available
+• Coast Guard coordination`,
+                duration: 18,
+              },
+            ],
+            regulationSections: ['reg-006'],
+            duration: 32,
+            order: 3,
+          },
+        ],
+        quiz: {
+          id: 'quiz-004-2',
+          title: 'Muster and Evacuation Quiz',
+          description: 'Test your evacuation knowledge',
+          questions: [
+            {
+              id: 'q-er-004',
+              question: 'What is the primary purpose of the Temporary Refuge (TR)?',
+              type: 'multiple-choice',
+              options: [
+                'A place to sleep during emergencies',
+                'Provide protected time for emergency assessment and organized evacuation',
+                'Storage for emergency equipment only',
+                'A helicopter landing area',
+              ],
+              correctAnswer: 'Provide protected time for emergency assessment and organized evacuation',
+              explanation: 'The TR provides protection while the emergency is assessed and evacuation is organized.',
+              avatarExplanation: 'The TR isn\'t meant to be permanent shelter - it\'s temporary refuge. It buys us time. Time to figure out what\'s happening, time to organize an orderly evacuation, time for help to arrive. It\'s designed to protect against fire and blast for a rated period while we make smart decisions.',
+              regulationReference: 'reg-006',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-er-005',
+              question: 'What type of lifeboat is typically used on offshore installations?',
+              type: 'multiple-choice',
+              options: [
+                'Open rowboat',
+                'Totally Enclosed Motor Propelled Survival Craft (TEMPSC)',
+                'Inflatable rubber raft',
+                'Kayak',
+              ],
+              correctAnswer: 'Totally Enclosed Motor Propelled Survival Craft (TEMPSC)',
+              explanation: 'TEMPSC lifeboats provide enclosed protection and self-propulsion for survivors.',
+              avatarExplanation: 'TEMPSC - Totally Enclosed Motor Propelled Survival Craft. These boats are fully enclosed to protect from fire, cold, and waves. They have an engine so we can move away from the installation. They\'re designed to be launched even through fire on the water surface. That\'s why they\'re our primary sea evacuation method.',
+              regulationReference: 'reg-006',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-er-006',
+              question: 'At your muster station, what is the FIRST thing you should do?',
+              type: 'multiple-choice',
+              options: [
+                'Find a seat and wait quietly',
+                'Report to the Muster Checker and give your name',
+                'Put on your survival suit',
+                'Call your family',
+              ],
+              correctAnswer: 'Report to the Muster Checker and give your name',
+              explanation: 'You must be accounted for by reporting to the Muster Checker immediately.',
+              avatarExplanation: 'Accountability is critical. Until we know everyone is safe, we might have people searching for you in dangerous conditions. Report your name to the Muster Checker immediately so you\'re accounted for in the POB count. Then stay there and await instructions.',
+              regulationReference: 'reg-006',
+              difficulty: 'beginner',
+              points: 10,
+            },
+          ],
+          passingScore: 80,
+          timeLimit: 15,
+          attemptsAllowed: 3,
+          avatarId: 'captain-sarah',
+        },
+        order: 2,
+        estimatedTime: 95,
+        prerequisites: ['mod-004-1'],
+      },
+      {
+        id: 'mod-004-3',
+        title: 'Emergency Drill Requirements',
+        description: 'Regulatory drill frequencies and participation requirements',
+        lessons: [
+          {
+            id: 'les-004-3-1',
+            title: 'Required Drill Frequencies',
+            description: 'How often drills must be conducted under SOR/2021-247',
+            avatarId: 'captain-sarah',
+            contents: [
+              {
+                id: 'cont-er-011',
+                type: 'avatar-presentation',
+                title: 'Drill Requirements',
+                content: 'Understanding mandatory drill frequencies',
+                avatarScript: 'Emergency drills aren\'t optional - they\'re required by regulation. Under SOR/2021-247, specific drills must be conducted at specified frequencies. Muster drills weekly, fire drills monthly, abandonment drills every six months. And everyone must participate. These drills are what make the difference between chaos and an orderly response in a real emergency.',
+                duration: 10,
+              },
+              {
+                id: 'cont-er-012',
+                type: 'text',
+                title: 'Drill Frequencies (SOR/2021-247 Part 12)',
+                content: `EMERGENCY DRILL REQUIREMENTS:
+
+MUSTER DRILLS - WEEKLY:
+• All personnel participate
+• Practice response to general alarm
+• Verify everyone knows their muster station
+• Check communication systems
+• Record attendance and timing
+
+FIRE DRILLS - MONTHLY:
+• Fire team response
+• Equipment operation
+• Hose deployment
+• Breathing apparatus use
+• Specific scenarios each time
+
+BOAT DRILLS - MONTHLY:
+• Lifeboat procedures
+• Davit operation (without launching)
+• Equipment checks
+• Embarkation procedures
+
+ABANDONMENT DRILLS - EVERY 6 MONTHS:
+• Full evacuation simulation
+• All muster stations to lifeboat stations
+• Survival suit donning
+• Lifeboat embarkation (may include lowering)
+• Full crew participation
+
+FULL-SCALE EXERCISES - ANNUALLY:
+• Comprehensive scenario
+• Multiple emergency types
+• External agency coordination
+• Complete response evaluation
+
+DOCUMENTATION REQUIREMENTS:
+All drills must be documented with:
+• Date and time
+• Type of drill
+• Scenario (if applicable)
+• Participants
+• Timing of response
+• Observations/problems noted
+• Corrective actions
+
+NEW PERSONNEL:
+Must participate in their first:
+• Muster drill within 24 hours of arrival
+• Fire drill within first week
+• Lifeboat drill before end of first hitch`,
+                duration: 18,
+              },
+            ],
+            regulationSections: ['reg-006'],
+            duration: 32,
+            order: 1,
+          },
+        ],
+        quiz: {
+          id: 'quiz-004-3',
+          title: 'Drill Requirements Quiz',
+          description: 'Test your knowledge of drill frequencies',
+          questions: [
+            {
+              id: 'q-er-007',
+              question: 'How often must muster drills be conducted under SOR/2021-247?',
+              type: 'multiple-choice',
+              options: [
+                'Daily',
+                'Weekly',
+                'Monthly',
+                'Quarterly',
+              ],
+              correctAnswer: 'Weekly',
+              explanation: 'Muster drills must be conducted weekly with all personnel participating.',
+              avatarExplanation: 'Weekly muster drills. Every week. This keeps the response automatic. People rotate on and off the installation, so we need frequent practice to ensure everyone knows what to do. It only takes a few minutes, but those minutes of practice could save your life.',
+              regulationReference: 'reg-006',
+              difficulty: 'beginner',
+              points: 10,
+            },
+            {
+              id: 'q-er-008',
+              question: 'How often must abandonment (evacuation) drills be conducted?',
+              type: 'multiple-choice',
+              options: [
+                'Weekly',
+                'Monthly',
+                'Every 6 months',
+                'Annually',
+              ],
+              correctAnswer: 'Every 6 months',
+              explanation: 'Full abandonment drills are required every 6 months under SOR/2021-247.',
+              avatarExplanation: 'Abandonment drills - full evacuation simulation - every 6 months minimum. These are comprehensive exercises where we practice the whole process: muster, survival suit donning, proceeding to lifeboat stations, and embarkation. We may even lower lifeboats during these drills.',
+              regulationReference: 'reg-006',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-er-009',
+              question: 'Within what timeframe must new personnel participate in their first muster drill?',
+              type: 'multiple-choice',
+              options: [
+                'Within 12 hours of arrival',
+                'Within 24 hours of arrival',
+                'Within 48 hours of arrival',
+                'Within their first week',
+              ],
+              correctAnswer: 'Within 24 hours of arrival',
+              explanation: 'New personnel must participate in a muster drill within 24 hours of arriving on the installation.',
+              avatarExplanation: 'Within 24 hours. New arrivals are the most vulnerable because they don\'t know the installation yet. We get them oriented to their muster station and routes immediately. Don\'t wait for the weekly drill - conduct one specifically for new arrivals if needed.',
+              regulationReference: 'reg-006',
+              difficulty: 'intermediate',
+              points: 15,
+            },
+            {
+              id: 'q-er-010',
+              question: 'How often must fire drills be conducted?',
+              type: 'multiple-choice',
+              options: [
+                'Weekly',
+                'Monthly',
+                'Every 6 months',
+                'Annually',
+              ],
+              correctAnswer: 'Monthly',
+              explanation: 'Fire drills must be conducted monthly under SOR/2021-247.',
+              avatarExplanation: 'Monthly fire drills. Fire is one of the most serious threats offshore - we\'re surrounded by hydrocarbons. The fire team needs regular practice, and everyone needs to know how to respond when fire alarm sounds. Each drill should focus on different scenarios and equipment.',
+              regulationReference: 'reg-006',
+              difficulty: 'beginner',
+              points: 10,
+            },
+          ],
+          passingScore: 80,
+          timeLimit: 15,
+          attemptsAllowed: 3,
+          avatarId: 'captain-sarah',
+        },
+        order: 3,
+        estimatedTime: 40,
+        prerequisites: ['mod-004-2'],
       },
     ],
     instructorAvatarId: 'captain-sarah',
-    targetAudience: ['All offshore personnel', 'New hires', 'Contractors'],
+    targetAudience: ['All offshore personnel', 'New hires', 'Contractors', 'Visitors'],
     learningObjectives: [
-      'Respond correctly to emergency alarms',
-      'Know your muster station and evacuation routes',
-      'Understand survival craft operation basics',
-      'Communicate effectively during emergencies',
+      'Understand emergency types requiring response plans under SOR/2021-247',
+      'Recognize alarm signals and know correct responses',
+      'Know your muster station and muster procedures',
+      'Understand the purpose and features of Temporary Refuge',
+      'Know evacuation methods including lifeboats and life rafts',
+      'Understand drill frequencies: muster weekly, fire monthly, abandonment every 6 months',
     ],
     certification: {
       available: true,
       name: 'Emergency Response Competency Certificate',
-      validityPeriod: 12,
-      accreditedBy: 'C-NLOER Safety Standards',
+      validityPeriod: 24,
+      accreditedBy: 'C-NLOER Safety Standards - SOR/2021-247 Part 12 Compliant',
       certificateTemplate: 'template-emergency',
     },
     pricing: {
@@ -1605,12 +3389,12 @@ Cold Water Immersion (Survival Suits):
       discounts: [],
       packages: [],
     },
-    tags: ['emergency', 'evacuation', 'safety', 'all-levels', 'required'],
-    featured: false,
+    tags: ['emergency', 'evacuation', 'muster', 'drills', 'safety', 'all-levels', 'required', 'SOR/2021-247'],
+    featured: true,
     publishedAt: '2024-03-01',
-    updatedAt: '2024-06-01',
-    totalDuration: 180,
-    totalLessons: 10,
+    updatedAt: '2025-06-01',
+    totalDuration: 210,
+    totalLessons: 6,
     enrollmentCount: 3200,
     rating: 4.8,
     reviewCount: 420,
