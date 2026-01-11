@@ -215,8 +215,86 @@ This creates all the database tables.
 
 ---
 
+## Security Best Practices
+
+### Environment Variables
+- **Never commit secrets**: Keep `.env` files in `.gitignore`
+- **Use strong JWT secrets**: Generate with `openssl rand -hex 32`
+- **Rotate secrets regularly**: Update JWT_SECRET every 90 days
+- **Use different keys per environment**: Separate test/production keys
+
+### API Security
+- **Rate limiting**: Backend includes built-in rate limiting
+- **CORS**: Configured to only accept requests from your frontend domain
+- **Input validation**: All inputs validated with Zod schemas
+- **SQL injection prevention**: Prisma ORM handles parameterized queries
+
+### Wallet Security
+- **Never store private keys**: Platform never has access to user private keys
+- **Use hardware wallets**: Recommend hardware wallets for mainnet deployments
+- **Verify contract addresses**: Always verify deployed contracts on block explorers
+
+### Stripe Security
+- **Webhook verification**: Always verify webhook signatures
+- **Use test mode first**: Test all payment flows with `sk_test_` keys
+- **Enable Stripe Radar**: Built-in fraud protection
+
+---
+
 ## Need Help?
 
 1. Check Railway logs: Railway Dashboard > Your Service > Logs
 2. Check Vercel logs: Vercel Dashboard > Your Project > Functions
 3. Check browser console for frontend errors
+
+---
+
+## Extended Troubleshooting
+
+### "Contract compilation fails"
+- Ensure Solidity version is compatible (^0.8.20)
+- Check for missing imports or syntax errors
+- Verify block configurations are complete
+
+### "Transaction stuck pending"
+- Check network congestion on block explorer
+- Increase gas price for faster confirmation
+- Verify wallet has sufficient funds for gas
+
+### "Wallet shows wrong network"
+- Click network selector in MetaMask
+- Add custom RPC if network is missing
+- Clear browser cache and reconnect wallet
+
+### "Stripe payments not working"
+- Verify webhook endpoint is accessible (not blocked by firewall)
+- Check webhook signing secret matches exactly
+- Ensure Stripe account is activated for live payments
+
+### "Gas estimation errors"
+- Contract may have reverts - check security scan results
+- Some operations require specific conditions (e.g., token balance)
+- Try deploying to testnet first to identify issues
+
+---
+
+## Testnet Faucets
+
+Get free test tokens for testing:
+
+| Network | Faucet URL |
+|---------|------------|
+| Sepolia | https://sepoliafaucet.com |
+| Polygon Amoy | https://faucet.polygon.technology |
+| BSC Testnet | https://testnet.bnbchain.org/faucet-smart |
+| Arbitrum Sepolia | https://faucet.arbitrum.io |
+| Base Sepolia | https://faucet.base.org |
+
+---
+
+## Support Resources
+
+- **Documentation**: This guide and backend/README.md
+- **GitHub Issues**: Report bugs and request features
+- **Discord Community**: Join for community support (coming soon)
+- **Email Support**: For enterprise customers

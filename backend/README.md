@@ -136,6 +136,165 @@ STRIPE_WEBHOOK_SECRET="whsec_..."
 | POST | /api/users/api-keys | Create API key |
 | DELETE | /api/users/api-keys/:id | Delete API key |
 
+## API Examples
+
+### Authentication
+
+**Register a new user:**
+```bash
+curl -X POST http://localhost:3001/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "password": "securePassword123",
+    "name": "John Doe"
+  }'
+```
+
+**Login:**
+```bash
+curl -X POST http://localhost:3001/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "password": "securePassword123"
+  }'
+```
+
+Response:
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "id": "uuid",
+    "email": "user@example.com",
+    "name": "John Doe"
+  }
+}
+```
+
+### Projects
+
+**Create a new project:**
+```bash
+curl -X POST http://localhost:3001/api/projects \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "name": "My Token Project",
+    "description": "ERC-20 token for my community",
+    "blocks": [
+      {
+        "type": "erc20",
+        "config": {
+          "name": "MyToken",
+          "symbol": "MTK",
+          "initialSupply": "1000000"
+        }
+      }
+    ]
+  }'
+```
+
+**List projects with pagination:**
+```bash
+curl "http://localhost:3001/api/projects?page=1&limit=10" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+### Compilation
+
+**Compile a contract:**
+```bash
+curl -X POST http://localhost:3001/api/compile \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "sourceCode": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n...",
+    "contractName": "MyToken"
+  }'
+```
+
+### Deployment
+
+**Estimate gas:**
+```bash
+curl -X POST http://localhost:3001/api/deploy/estimate-gas \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "bytecode": "0x608060405234801561001057600080fd5b50...",
+    "network": "sepolia"
+  }'
+```
+
+**Deploy contract:**
+```bash
+curl -X POST http://localhost:3001/api/deploy \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -d '{
+    "projectId": "project-uuid",
+    "network": "sepolia",
+    "bytecode": "0x608060405234801561001057600080fd5b50...",
+    "abi": [...],
+    "constructorArgs": []
+  }'
+```
+
+## Pagination
+
+List endpoints support pagination with the following query parameters:
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| page | number | 1 | Page number (1-indexed) |
+| limit | number | 10 | Items per page (max 100) |
+| sort | string | createdAt | Field to sort by |
+| order | string | desc | Sort order (asc/desc) |
+
+**Example response with pagination:**
+```json
+{
+  "data": [...],
+  "pagination": {
+    "page": 1,
+    "limit": 10,
+    "total": 45,
+    "totalPages": 5,
+    "hasNext": true,
+    "hasPrev": false
+  }
+}
+```
+
+## Error Responses
+
+All errors follow this format:
+
+```json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid email format",
+    "details": [
+      {
+        "field": "email",
+        "message": "Must be a valid email address"
+      }
+    ]
+  }
+}
+```
+
+Common error codes:
+- `VALIDATION_ERROR` - Invalid input data
+- `UNAUTHORIZED` - Missing or invalid JWT token
+- `FORBIDDEN` - Insufficient permissions
+- `NOT_FOUND` - Resource not found
+- `RATE_LIMITED` - Too many requests
+- `INTERNAL_ERROR` - Server error
+
 ## Database Schema
 
 The database includes the following models:

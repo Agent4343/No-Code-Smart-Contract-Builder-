@@ -415,21 +415,63 @@ export default function HowItWorks() {
       <div className="bg-gradient-to-r from-primary-900/50 to-purple-900/50 rounded-2xl p-8 border border-primary-500/20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <p className="text-3xl font-bold text-white">10 min</p>
-            <p className="text-slate-400 text-sm">Average deploy time</p>
+            <p className="text-3xl font-bold text-white">5 min</p>
+            <p className="text-slate-400 text-sm">Build your first contract</p>
           </div>
           <div>
             <p className="text-3xl font-bold text-white">$0</p>
-            <p className="text-slate-400 text-sm">Platform cost to start</p>
+            <p className="text-slate-400 text-sm">Free to start (pay only gas)</p>
           </div>
           <div>
             <p className="text-3xl font-bold text-white">90%</p>
             <p className="text-slate-400 text-sm">Time saved vs coding</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-white">15+</p>
+            <p className="text-3xl font-bold text-white">10+</p>
             <p className="text-slate-400 text-sm">Supported networks</p>
           </div>
+        </div>
+      </div>
+
+      {/* Testnet Faucets */}
+      <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+        <h2 className="text-2xl font-bold text-white mb-4 text-center">
+          Get Free Test Tokens
+        </h2>
+        <p className="text-slate-400 text-center mb-6">
+          Use these faucets to get free test tokens for practicing deployments.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <a href="https://sepoliafaucet.com" target="_blank" rel="noopener noreferrer"
+             className="flex items-center gap-3 p-4 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+              <Coins className="w-5 h-5 text-blue-400" />
+            </div>
+            <div>
+              <p className="text-white font-medium">Sepolia Faucet</p>
+              <p className="text-slate-400 text-sm">Ethereum testnet</p>
+            </div>
+          </a>
+          <a href="https://faucet.polygon.technology" target="_blank" rel="noopener noreferrer"
+             className="flex items-center gap-3 p-4 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+              <Coins className="w-5 h-5 text-purple-400" />
+            </div>
+            <div>
+              <p className="text-white font-medium">Polygon Amoy Faucet</p>
+              <p className="text-slate-400 text-sm">Polygon testnet</p>
+            </div>
+          </a>
+          <a href="https://testnet.bnbchain.org/faucet-smart" target="_blank" rel="noopener noreferrer"
+             className="flex items-center gap-3 p-4 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors">
+            <div className="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center">
+              <Coins className="w-5 h-5 text-yellow-400" />
+            </div>
+            <div>
+              <p className="text-white font-medium">BSC Testnet Faucet</p>
+              <p className="text-slate-400 text-sm">BNB Chain testnet</p>
+            </div>
+          </a>
         </div>
       </div>
 
