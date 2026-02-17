@@ -3,533 +3,292 @@ import {
   User,
   Bell,
   Shield,
-  Palette,
-  Key,
   CreditCard,
+  Key,
+  Globe,
   Save,
-  ExternalLink,
+  Check,
+  Crown,
+  Zap,
 } from 'lucide-react';
-import { useWalletStore } from '../store/walletStore';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 export default function Settings() {
-  const { address, isConnected } = useWalletStore();
   const [activeTab, setActiveTab] = useState('profile');
-
-  const [settings, setSettings] = useState({
-    displayName: '',
-    email: '',
-    notifications: {
-      deployments: true,
-      security: true,
-      marketing: false,
-      updates: true,
-    },
-    security: {
-      twoFactor: false,
-      signingRequired: true,
-    },
-    preferences: {
-      theme: 'dark',
-      language: 'en',
-      gasLimit: 'standard',
-      slippage: 0.5,
-    },
-  });
-
-  const handleSave = () => {
-    // Save settings logic here
-    toast.success('Settings saved successfully!');
-  };
+  const [saved, setSaved] = useState(false);
 
   const tabs = [
     { id: 'profile', label: 'Profile', icon: User },
     { id: 'notifications', label: 'Notifications', icon: Bell },
     { id: 'security', label: 'Security', icon: Shield },
-    { id: 'preferences', label: 'Preferences', icon: Palette },
-    { id: 'api', label: 'API Keys', icon: Key },
     { id: 'billing', label: 'Billing', icon: CreditCard },
+    { id: 'api', label: 'API Keys', icon: Key },
+    { id: 'networks', label: 'Networks', icon: Globe },
   ];
 
+  const handleSave = () => {
+    setSaved(true);
+    toast.success('Settings saved!');
+    setTimeout(() => setSaved(false), 2000);
+  };
+
   return (
-    <div className="space-y-6 animate-in">
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-white">Settings</h1>
-        <p className="text-slate-400 mt-1">
-          Manage your account settings and preferences
-        </p>
+    <div className="animate-in">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-3xl font-bold text-white">Settings</h1>
+          <p className="text-slate-400 mt-1">Manage your account and preferences</p>
+        </div>
+        <button onClick={handleSave} className="btn-primary">
+          {saved ? <Check className="w-4 h-4" /> : <Save className="w-4 h-4" />}
+          {saved ? 'Saved!' : 'Save Changes'}
+        </button>
       </div>
 
       <div className="flex gap-6">
-        {/* Sidebar */}
-        <div className="w-64 shrink-0">
-          <nav className="space-y-1">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  activeTab === tab.id
-                    ? 'bg-primary-600/20 text-primary-400 border border-primary-500/30'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
-                }`}
-              >
-                <tab.icon className="w-5 h-5" />
-                <span className="font-medium">{tab.label}</span>
-              </button>
-            ))}
-          </nav>
+        {/* Tab Navigation */}
+        <div className="w-56 flex-shrink-0 space-y-1">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all text-sm font-medium ${
+                activeTab === tab.id
+                  ? 'bg-primary-600/15 text-primary-400'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-700/40'
+              }`}
+            >
+              <tab.icon className="w-4 h-4" />
+              {tab.label}
+            </button>
+          ))}
         </div>
 
-        {/* Content */}
-        <div className="flex-1">
-          {/* Profile Tab */}
+        {/* Tab Content */}
+        <div className="flex-1 space-y-6">
           {activeTab === 'profile' && (
-            <div className="card">
-              <h2 className="text-xl font-semibold text-white mb-6">
-                Profile Settings
-              </h2>
+            <>
+              <div className="card">
+                <h2 className="text-lg font-semibold text-white mb-6">Profile Information</h2>
 
-              <div className="space-y-6">
-                {/* Wallet Address */}
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Wallet Address
-                  </label>
-                  <div className="flex items-center gap-3">
-                    <div className="flex-1 bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2 text-slate-400 font-mono text-sm">
-                      {isConnected ? address : 'Not connected'}
-                    </div>
-                    {isConnected && (
-                      <a
-                        href={`https://etherscan.io/address/${address}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-secondary"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
+                {/* Avatar */}
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-purple-600 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    U
+                  </div>
+                  <div>
+                    <button className="btn-secondary text-sm">Change Avatar</button>
+                    <p className="text-xs text-slate-500 mt-2">JPG, PNG, or SVG. Max 2MB.</p>
                   </div>
                 </div>
 
-                {/* Display Name */}
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Display Name
-                  </label>
-                  <input
-                    type="text"
-                    value={settings.displayName}
-                    onChange={(e) =>
-                      setSettings({ ...settings, displayName: e.target.value })
-                    }
-                    placeholder="Enter your display name"
-                    className="input-field"
-                  />
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Display Name
+                    </label>
+                    <input
+                      type="text"
+                      className="input-field"
+                      placeholder="Enter display name"
+                      defaultValue=""
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      className="input-field"
+                      placeholder="you@example.com"
+                      defaultValue=""
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Bio
+                    </label>
+                    <textarea
+                      className="input-field min-h-[80px] resize-none"
+                      placeholder="Tell others about yourself..."
+                      defaultValue=""
+                    />
+                  </div>
                 </div>
-
-                {/* Email */}
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    value={settings.email}
-                    onChange={(e) =>
-                      setSettings({ ...settings, email: e.target.value })
-                    }
-                    placeholder="Enter your email"
-                    className="input-field"
-                  />
-                  <p className="text-xs text-slate-500 mt-1">
-                    Used for important notifications only
-                  </p>
-                </div>
-
-                <button onClick={handleSave} className="btn-primary">
-                  <Save className="w-4 h-4" />
-                  Save Changes
-                </button>
               </div>
-            </div>
+
+              <div className="card">
+                <h2 className="text-lg font-semibold text-white mb-4">Wallet Connection</h2>
+                <p className="text-sm text-slate-400 mb-4">
+                  Connect your wallet to deploy contracts and sign transactions.
+                </p>
+                <div className="p-4 bg-slate-700/20 rounded-xl flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center">
+                      <Globe className="w-5 h-5 text-orange-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-white">No wallet connected</p>
+                      <p className="text-xs text-slate-500">Connect via the header button</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
 
-          {/* Notifications Tab */}
           {activeTab === 'notifications' && (
             <div className="card">
-              <h2 className="text-xl font-semibold text-white mb-6">
-                Notification Preferences
-              </h2>
-
+              <h2 className="text-lg font-semibold text-white mb-6">Notification Preferences</h2>
               <div className="space-y-4">
                 {[
-                  {
-                    key: 'deployments',
-                    label: 'Deployment Updates',
-                    description: 'Receive notifications when contracts are deployed',
-                  },
-                  {
-                    key: 'security',
-                    label: 'Security Alerts',
-                    description: 'Get notified about security issues or suspicious activity',
-                  },
-                  {
-                    key: 'updates',
-                    label: 'Platform Updates',
-                    description: 'Stay informed about new features and improvements',
-                  },
-                  {
-                    key: 'marketing',
-                    label: 'Marketing',
-                    description: 'Receive promotional emails and newsletters',
-                  },
-                ].map((item) => (
+                  { label: 'Deployment Confirmations', description: 'Get notified when deployments complete', enabled: true },
+                  { label: 'Security Alerts', description: 'Alerts for detected vulnerabilities', enabled: true },
+                  { label: 'Template Updates', description: 'When templates you use get updated', enabled: false },
+                  { label: 'Product Updates', description: 'New features and improvements', enabled: false },
+                ].map((pref) => (
                   <div
-                    key={item.key}
-                    className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg"
+                    key={pref.label}
+                    className="flex items-center justify-between p-4 bg-slate-700/20 rounded-xl"
                   >
                     <div>
-                      <p className="text-white font-medium">{item.label}</p>
-                      <p className="text-sm text-slate-400">{item.description}</p>
+                      <p className="font-medium text-white">{pref.label}</p>
+                      <p className="text-sm text-slate-400 mt-0.5">{pref.description}</p>
                     </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={
-                          settings.notifications[
-                            item.key as keyof typeof settings.notifications
-                          ]
-                        }
-                        onChange={(e) =>
-                          setSettings({
-                            ...settings,
-                            notifications: {
-                              ...settings.notifications,
-                              [item.key]: e.target.checked,
-                            },
-                          })
-                        }
-                        className="sr-only peer"
-                      />
-                      <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                    <label className="relative inline-flex cursor-pointer">
+                      <input type="checkbox" className="sr-only peer" defaultChecked={pref.enabled} />
+                      <div className="w-11 h-6 bg-slate-700 rounded-full peer peer-checked:bg-primary-600 peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all" />
                     </label>
                   </div>
                 ))}
-
-                <button onClick={handleSave} className="btn-primary mt-4">
-                  <Save className="w-4 h-4" />
-                  Save Preferences
-                </button>
               </div>
             </div>
           )}
 
-          {/* Security Tab */}
           {activeTab === 'security' && (
             <div className="card">
-              <h2 className="text-xl font-semibold text-white mb-6">
-                Security Settings
-              </h2>
-
-              <div className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg">
-                  <div>
-                    <p className="text-white font-medium">
-                      Two-Factor Authentication
-                    </p>
-                    <p className="text-sm text-slate-400">
-                      Add an extra layer of security to your account
-                    </p>
+              <h2 className="text-lg font-semibold text-white mb-6">Security Settings</h2>
+              <div className="space-y-4">
+                <div className="p-4 bg-slate-700/20 rounded-xl">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium text-white">Two-Factor Authentication</p>
+                      <p className="text-sm text-slate-400 mt-0.5">Add an extra layer of security to your account</p>
+                    </div>
+                    <button className="btn-secondary text-sm">Enable</button>
                   </div>
-                  <button className="btn-secondary">Enable</button>
                 </div>
-
-                <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg">
-                  <div>
-                    <p className="text-white font-medium">
-                      Transaction Signing
-                    </p>
-                    <p className="text-sm text-slate-400">
-                      Require wallet signature for all deployments
-                    </p>
+                <div className="p-4 bg-slate-700/20 rounded-xl">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-medium text-white">Session Management</p>
+                      <p className="text-sm text-slate-400 mt-0.5">Manage active sessions and revoke access</p>
+                    </div>
+                    <button className="btn-ghost text-sm text-red-400 hover:text-red-300">
+                      Revoke All
+                    </button>
                   </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={settings.security.signingRequired}
-                      onChange={(e) =>
-                        setSettings({
-                          ...settings,
-                          security: {
-                            ...settings.security,
-                            signingRequired: e.target.checked,
-                          },
-                        })
-                      }
-                      className="sr-only peer"
-                    />
-                    <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
-                  </label>
-                </div>
-
-                <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                  <p className="text-yellow-400 font-medium">Security Tip</p>
-                  <p className="text-sm text-slate-400 mt-1">
-                    Never share your private keys or seed phrase. ContractForge will
-                    never ask for them.
-                  </p>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Preferences Tab */}
-          {activeTab === 'preferences' && (
+          {activeTab === 'billing' && (
+            <>
+              <div className="card relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-full blur-2xl" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-lg font-semibold text-white">Current Plan</h2>
+                    <span className="badge-primary">
+                      <Zap className="w-3 h-3" />
+                      Free Plan
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    <div className="p-4 bg-slate-700/20 rounded-xl text-center">
+                      <p className="text-2xl font-bold text-white">5</p>
+                      <p className="text-xs text-slate-500 mt-1">Deploys / Month</p>
+                    </div>
+                    <div className="p-4 bg-slate-700/20 rounded-xl text-center">
+                      <p className="text-2xl font-bold text-white">0 / 5</p>
+                      <p className="text-xs text-slate-500 mt-1">Used This Month</p>
+                    </div>
+                    <div className="p-4 bg-slate-700/20 rounded-xl text-center">
+                      <p className="text-2xl font-bold text-green-400">Testnets</p>
+                      <p className="text-xs text-slate-500 mt-1">Network Access</p>
+                    </div>
+                  </div>
+
+                  <Link to="/pricing" className="w-full btn-primary justify-center">
+                    <Crown className="w-4 h-4" />
+                    Upgrade to Pro
+                  </Link>
+                </div>
+              </div>
+
+              <div className="card">
+                <h2 className="text-lg font-semibold text-white mb-4">Transaction History</h2>
+                <div className="flex flex-col items-center justify-center py-8">
+                  <CreditCard className="w-10 h-10 text-slate-600 mb-3" />
+                  <p className="text-slate-400 text-sm">No transactions yet</p>
+                </div>
+              </div>
+            </>
+          )}
+
+          {activeTab === 'api' && (
             <div className="card">
-              <h2 className="text-xl font-semibold text-white mb-6">
-                Application Preferences
-              </h2>
-
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Theme
-                  </label>
-                  <select
-                    value={settings.preferences.theme}
-                    onChange={(e) =>
-                      setSettings({
-                        ...settings,
-                        preferences: {
-                          ...settings.preferences,
-                          theme: e.target.value,
-                        },
-                      })
-                    }
-                    className="input-field"
-                  >
-                    <option value="dark">Dark</option>
-                    <option value="light">Light (Coming Soon)</option>
-                    <option value="system">System</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Language
-                  </label>
-                  <select
-                    value={settings.preferences.language}
-                    onChange={(e) =>
-                      setSettings({
-                        ...settings,
-                        preferences: {
-                          ...settings.preferences,
-                          language: e.target.value,
-                        },
-                      })
-                    }
-                    className="input-field"
-                  >
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                    <option value="zh">Chinese</option>
-                    <option value="ja">Japanese</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Default Gas Limit
-                  </label>
-                  <select
-                    value={settings.preferences.gasLimit}
-                    onChange={(e) =>
-                      setSettings({
-                        ...settings,
-                        preferences: {
-                          ...settings.preferences,
-                          gasLimit: e.target.value,
-                        },
-                      })
-                    }
-                    className="input-field"
-                  >
-                    <option value="low">Low (Slower)</option>
-                    <option value="standard">Standard</option>
-                    <option value="fast">Fast</option>
-                    <option value="instant">Instant</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">
-                    Slippage Tolerance: {settings.preferences.slippage}%
-                  </label>
-                  <input
-                    type="range"
-                    min="0.1"
-                    max="5"
-                    step="0.1"
-                    value={settings.preferences.slippage}
-                    onChange={(e) =>
-                      setSettings({
-                        ...settings,
-                        preferences: {
-                          ...settings.preferences,
-                          slippage: parseFloat(e.target.value),
-                        },
-                      })
-                    }
-                    className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
-                  />
-                </div>
-
-                <button onClick={handleSave} className="btn-primary">
-                  <Save className="w-4 h-4" />
-                  Save Preferences
+              <h2 className="text-lg font-semibold text-white mb-2">API Keys</h2>
+              <p className="text-sm text-slate-400 mb-6">
+                Generate API keys for programmatic access to ContractForge.
+              </p>
+              <div className="flex flex-col items-center justify-center py-8 border border-dashed border-slate-700 rounded-xl">
+                <Key className="w-10 h-10 text-slate-600 mb-3" />
+                <p className="text-slate-400 text-sm mb-4">No API keys generated</p>
+                <button className="btn-primary text-sm">
+                  <Key className="w-4 h-4" />
+                  Generate API Key
                 </button>
               </div>
             </div>
           )}
 
-          {/* API Keys Tab */}
-          {activeTab === 'api' && (
+          {activeTab === 'networks' && (
             <div className="card">
-              <h2 className="text-xl font-semibold text-white mb-6">API Keys</h2>
-
-              <div className="space-y-4">
-                <div className="p-4 bg-slate-700/30 rounded-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-white font-medium">Production Key</p>
-                    <span className="px-2 py-1 bg-green-500/10 text-green-400 text-xs rounded">
-                      Active
-                    </span>
-                  </div>
-                  <code className="text-sm text-slate-400 font-mono">
-                    cf_prod_••••••••••••••••
-                  </code>
-                </div>
-
-                <div className="p-4 bg-slate-700/30 rounded-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-white font-medium">Test Key</p>
-                    <span className="px-2 py-1 bg-yellow-500/10 text-yellow-400 text-xs rounded">
-                      Test Mode
-                    </span>
-                  </div>
-                  <code className="text-sm text-slate-400 font-mono">
-                    cf_test_••••••••••••••••
-                  </code>
-                </div>
-
-                <button className="btn-secondary">Generate New Key</button>
-              </div>
-            </div>
-          )}
-
-          {/* Billing Tab */}
-          {activeTab === 'billing' && (
-            <div className="card">
-              <h2 className="text-xl font-semibold text-white mb-6">
-                Subscription & Billing
-              </h2>
-
-              <div className="space-y-6">
-                {/* Current Plan */}
-                <div className="p-6 bg-gradient-to-r from-primary-600/20 to-purple-600/20 border border-primary-500/30 rounded-xl">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="px-3 py-1 bg-primary-500/20 rounded-full text-primary-400 text-sm font-medium">
-                        Current Plan
-                      </span>
-                      <h3 className="text-2xl font-bold text-white mt-3">
-                        Free Plan
-                      </h3>
-                      <p className="text-slate-400 mt-1">
-                        5 deployments per month included
-                      </p>
+              <h2 className="text-lg font-semibold text-white mb-2">Network Configuration</h2>
+              <p className="text-sm text-slate-400 mb-6">
+                Configure RPC endpoints and custom networks for deployments.
+              </p>
+              <div className="space-y-3">
+                {[
+                  { name: 'Ethereum Mainnet', color: '#627EEA', status: 'Default' },
+                  { name: 'Polygon', color: '#8247E5', status: 'Default' },
+                  { name: 'Arbitrum One', color: '#28A0F0', status: 'Default' },
+                  { name: 'Base', color: '#0052FF', status: 'Default' },
+                  { name: 'BNB Chain', color: '#F0B90B', status: 'Default' },
+                ].map((network) => (
+                  <div
+                    key={network.name}
+                    className="flex items-center justify-between p-4 bg-slate-700/20 rounded-xl"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: network.color }}
+                      />
+                      <span className="font-medium text-white">{network.name}</span>
                     </div>
-                    <button className="btn-primary">Upgrade Plan</button>
+                    <span className="text-xs text-slate-500">{network.status}</span>
                   </div>
-                </div>
-
-                {/* Plan Comparison */}
-                <div className="grid grid-cols-3 gap-4">
-                  {[
-                    {
-                      name: 'Starter',
-                      price: '$29',
-                      features: ['25 deployments/mo', 'Basic templates', 'Email support'],
-                    },
-                    {
-                      name: 'Professional',
-                      price: '$99',
-                      features: [
-                        'Unlimited deployments',
-                        'Premium templates',
-                        'Priority support',
-                        'Custom branding',
-                      ],
-                      popular: true,
-                    },
-                    {
-                      name: 'Enterprise',
-                      price: 'Custom',
-                      features: [
-                        'Everything in Pro',
-                        'Dedicated support',
-                        'SLA guarantee',
-                        'Custom integrations',
-                      ],
-                    },
-                  ].map((plan) => (
-                    <div
-                      key={plan.name}
-                      className={`p-6 rounded-xl border ${
-                        plan.popular
-                          ? 'border-primary-500 bg-primary-500/5'
-                          : 'border-slate-700 bg-slate-800/50'
-                      }`}
-                    >
-                      {plan.popular && (
-                        <span className="px-2 py-1 bg-primary-500 text-white text-xs rounded-full">
-                          Popular
-                        </span>
-                      )}
-                      <h3 className="text-xl font-bold text-white mt-2">
-                        {plan.name}
-                      </h3>
-                      <p className="text-2xl font-bold text-white mt-2">
-                        {plan.price}
-                        <span className="text-sm text-slate-400 font-normal">
-                          /month
-                        </span>
-                      </p>
-                      <ul className="mt-4 space-y-2">
-                        {plan.features.map((feature) => (
-                          <li
-                            key={feature}
-                            className="text-sm text-slate-400 flex items-center gap-2"
-                          >
-                            <span className="text-green-400">✓</span> {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <button
-                        className={`w-full mt-4 ${
-                          plan.popular ? 'btn-primary' : 'btn-secondary'
-                        }`}
-                      >
-                        {plan.price === 'Custom' ? 'Contact Sales' : 'Upgrade'}
-                      </button>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </div>
+              <button className="btn-secondary mt-4 w-full justify-center text-sm">
+                Add Custom Network
+              </button>
             </div>
           )}
         </div>

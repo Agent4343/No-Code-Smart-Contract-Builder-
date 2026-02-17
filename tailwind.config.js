@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
       colors: {
         primary: {
           50: '#f0f9ff',
@@ -26,6 +30,7 @@ export default {
           avalanche: '#E84142',
           arbitrum: '#28A0F0',
           optimism: '#FF0420',
+          base: '#0052FF',
           solana: '#9945FF',
         },
       },
@@ -33,6 +38,8 @@ export default {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'slide-in': 'slideIn 0.3s ease-out',
         'fade-in': 'fadeIn 0.2s ease-out',
+        'spin-slow': 'spin 8s linear infinite',
+        'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
       },
       keyframes: {
         slideIn: {
@@ -43,6 +50,13 @@ export default {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
         },
+        bounceGentle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },

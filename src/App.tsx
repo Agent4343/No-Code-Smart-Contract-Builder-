@@ -8,6 +8,7 @@ import Deployments from './pages/Deployments';
 import Marketplace from './pages/Marketplace';
 import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
+import Pricing from './pages/Pricing';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/pricing" element={<Pricing />} />
       </Routes>
     </Layout>
   );

@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex h-screen bg-slate-900">
+    <div className="flex h-screen bg-slate-900 gradient-mesh">
       <Sidebar />
       <div className="flex flex-col flex-1 overflow-hidden">
         <Header />

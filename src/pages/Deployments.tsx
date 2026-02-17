@@ -1,42 +1,24 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Rocket,
   ExternalLink,
-  Copy,
-  Check,
-  Search,
   CheckCircle,
   Clock,
   XCircle,
+  ArrowRight,
+  Shield,
+  Copy,
 } from 'lucide-react';
 import { useContractStore } from '../store/contractStore';
-import { NETWORKS } from '../types/networks';
 import toast from 'react-hot-toast';
 
 export default function Deployments() {
-  const { deployments, generatedContract, selectedNetwork, setSelectedNetwork, isDeploying } =
-    useContractStore();
-  const [copied, setCopied] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<'all' | 'confirmed' | 'pending' | 'failed'>(
-    'all'
-  );
+  const { deployments } = useContractStore();
 
-  const handleCopy = async (text: string, id: string) => {
-    await navigator.clipboard.writeText(text);
-    setCopied(id);
-    toast.success('Copied to clipboard!');
-    setTimeout(() => setCopied(null), 2000);
+  const handleCopyAddress = (address: string) => {
+    navigator.clipboard.writeText(address);
+    toast.success('Address copied!');
   };
-
-  const filteredDeployments = deployments.filter((d) => {
-    const matchesSearch =
-      !searchQuery ||
-      d.contractName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      d.address.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesStatus = statusFilter === 'all' || d.status === statusFilter;
-    return matchesSearch && matchesStatus;
-  });
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -51,6 +33,48 @@ export default function Deployments() {
     }
   };
 
+  if (deployments.length === 0) {
+    return (
+      <div className="animate-in">
+        <h1 className="text-3xl font-bold text-white mb-8">Deployments</h1>
+        <div className="flex flex-col items-center justify-center py-24 card">
+          <div className="w-20 h-20 bg-gradient-to-br from-primary-500/10 to-purple-500/10 rounded-2xl flex items-center justify-center mb-6 border border-primary-500/20">
+            <Rocket className="w-9 h-9 text-primary-400 float" />
+          </div>
+          <h2 className="text-xl font-semibold text-white">No Deployments Yet</h2>
+          <p className="text-slate-400 text-sm mt-2 max-w-md text-center">
+            Build your smart contract with the visual builder, then deploy it to any supported blockchain with one click.
+          </p>
+          <div className="flex items-center gap-4 mt-6">
+            <Link to="/builder" className="btn-primary">
+              <Rocket className="w-4 h-4" />
+              Open Builder
+            </Link>
+            <Link to="/templates" className="btn-secondary">
+              Browse Templates
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-slate-700/50 w-full max-w-lg">
+            {[
+              { label: 'Build', desc: 'Drag & drop blocks' },
+              { label: 'Generate', desc: 'One-click compilation' },
+              { label: 'Deploy', desc: 'To 10+ chains' },
+            ].map((step, i) => (
+              <div key={step.label} className="text-center">
+                <div className="w-8 h-8 bg-primary-500/10 rounded-full flex items-center justify-center mx-auto mb-2 text-primary-400 text-sm font-bold ring-1 ring-primary-500/20">
+                  {i + 1}
+                </div>
+                <p className="text-sm font-medium text-white">{step.label}</p>
+                <p className="text-xs text-slate-500 mt-0.5">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 animate-in">
       {/* Header */}
@@ -58,223 +82,95 @@ export default function Deployments() {
         <div>
           <h1 className="text-3xl font-bold text-white">Deployments</h1>
           <p className="text-slate-400 mt-1">
-            Manage and monitor your deployed smart contracts
+            Track and manage your deployed smart contracts
           </p>
         </div>
-        {generatedContract && (
-          <button
-            disabled={isDeploying || !selectedNetwork}
-            className="btn-primary disabled:opacity-50"
-          >
-            <Rocket className="w-4 h-4" />
-            Deploy Contract
-          </button>
-        )}
+        <Link to="/builder" className="btn-primary">
+          <Rocket className="w-4 h-4" />
+          New Deployment
+        </Link>
       </div>
 
-      {/* Network Selection */}
-      <div className="card">
-        <h2 className="text-lg font-semibold text-white mb-4">Select Network</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {NETWORKS.filter((n) => !n.isTestnet).map((network) => (
-            <button
-              key={network.id}
-              onClick={() => setSelectedNetwork(network)}
-              className={`p-4 rounded-lg border transition-all duration-200 ${
-                selectedNetwork?.id === network.id
-                  ? 'border-primary-500 bg-primary-500/10'
-                  : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: network.color }}
-                />
-                <span className="text-sm font-medium text-white">{network.name}</span>
-              </div>
-              <p className="text-xs text-slate-400 mt-1">{network.nativeCurrency.symbol}</p>
-            </button>
-          ))}
+      {/* Stats */}
+      <div className="grid grid-cols-3 gap-4">
+        <div className="card">
+          <p className="text-3xl font-bold text-white">{deployments.length}</p>
+          <p className="text-sm text-slate-400">Total Deployments</p>
         </div>
-        <div className="mt-4 pt-4 border-t border-slate-700">
-          <p className="text-sm text-slate-400 mb-3">Testnets</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {NETWORKS.filter((n) => n.isTestnet).map((network) => (
-              <button
-                key={network.id}
-                onClick={() => setSelectedNetwork(network)}
-                className={`p-3 rounded-lg border transition-all duration-200 ${
-                  selectedNetwork?.id === network.id
-                    ? 'border-primary-500 bg-primary-500/10'
-                    : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <span
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: network.color }}
-                  />
-                  <span className="text-xs font-medium text-white">{network.name}</span>
-                </div>
-              </button>
-            ))}
-          </div>
+        <div className="card">
+          <p className="text-3xl font-bold text-green-400">
+            {deployments.filter((d) => d.status === 'confirmed').length}
+          </p>
+          <p className="text-sm text-slate-400">Confirmed</p>
+        </div>
+        <div className="card">
+          <p className="text-3xl font-bold text-white">
+            {new Set(deployments.map((d) => d.network.id)).size}
+          </p>
+          <p className="text-sm text-slate-400">Networks Used</p>
         </div>
       </div>
 
       {/* Deployments List */}
-      <div className="card">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-white">Deployment History</h2>
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-48 bg-slate-700/50 border border-slate-600 rounded-lg pl-10 pr-4 py-1.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
-            </div>
-            <select
-              value={statusFilter}
-              onChange={(e) =>
-                setStatusFilter(e.target.value as 'all' | 'confirmed' | 'pending' | 'failed')
-              }
-              className="bg-slate-700/50 border border-slate-600 rounded-lg px-3 py-1.5 text-sm text-white"
-            >
-              <option value="all">All Status</option>
-              <option value="confirmed">Confirmed</option>
-              <option value="pending">Pending</option>
-              <option value="failed">Failed</option>
-            </select>
-          </div>
-        </div>
-
-        {filteredDeployments.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-slate-700">
-                  <th className="text-left py-3 px-4 text-sm font-medium text-slate-400">
-                    Contract
-                  </th>
-                  <th className="text-left py-3 px-4 text-sm font-medium text-slate-400">
-                    Network
-                  </th>
-                  <th className="text-left py-3 px-4 text-sm font-medium text-slate-400">
-                    Address
-                  </th>
-                  <th className="text-left py-3 px-4 text-sm font-medium text-slate-400">
-                    Status
-                  </th>
-                  <th className="text-left py-3 px-4 text-sm font-medium text-slate-400">
-                    Gas Used
-                  </th>
-                  <th className="text-left py-3 px-4 text-sm font-medium text-slate-400">
-                    Date
-                  </th>
-                  <th className="text-left py-3 px-4 text-sm font-medium text-slate-400">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredDeployments.map((deployment) => (
-                  <tr
-                    key={deployment.id}
-                    className="border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors"
+      <div className="space-y-3 stagger-in">
+        {deployments.map((deployment) => (
+          <div
+            key={deployment.id}
+            className="card flex items-center justify-between gap-4 hover:border-slate-600/80 transition-colors"
+          >
+            <div className="flex items-center gap-4">
+              {getStatusIcon(deployment.status)}
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-semibold text-white">
+                    {deployment.contractName}
+                  </h3>
+                  {deployment.verified && (
+                    <span className="badge-success">
+                      <Shield className="w-3 h-3" />
+                      Verified
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center gap-2 mt-1">
+                  <span
+                    className="px-2 py-0.5 rounded-full text-xs font-medium"
+                    style={{
+                      backgroundColor: `${deployment.network.color}15`,
+                      color: deployment.network.color,
+                    }}
                   >
-                    <td className="py-3 px-4">
-                      <span className="text-white font-medium">
-                        {deployment.contractName}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4">
-                      <span
-                        className="px-2 py-1 rounded text-xs font-medium"
-                        style={{
-                          backgroundColor: `${deployment.network.color}20`,
-                          color: deployment.network.color,
-                        }}
-                      >
-                        {deployment.network.name}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        <code className="text-sm text-slate-300 font-mono">
-                          {deployment.address.slice(0, 6)}...{deployment.address.slice(-4)}
-                        </code>
-                        <button
-                          onClick={() => handleCopy(deployment.address, deployment.id)}
-                          className="text-slate-400 hover:text-white"
-                        >
-                          {copied === deployment.id ? (
-                            <Check className="w-4 h-4 text-green-400" />
-                          ) : (
-                            <Copy className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        {getStatusIcon(deployment.status)}
-                        <span
-                          className={`text-sm capitalize ${
-                            deployment.status === 'confirmed'
-                              ? 'text-green-400'
-                              : deployment.status === 'pending'
-                              ? 'text-yellow-400'
-                              : 'text-red-400'
-                          }`}
-                        >
-                          {deployment.status}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4 text-slate-400 text-sm">
-                      {deployment.gasUsed.toLocaleString()}
-                    </td>
-                    <td className="py-3 px-4 text-slate-400 text-sm">
-                      {new Date(deployment.deployedAt).toLocaleDateString()}
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        <a
-                          href={`${deployment.network.explorerUrl}/address/${deployment.address}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-primary-400 hover:text-primary-300"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                        {!deployment.verified && (
-                          <button className="text-slate-400 hover:text-white text-xs">
-                            Verify
-                          </button>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Rocket className="w-8 h-8 text-slate-500" />
+                    {deployment.network.name}
+                  </span>
+                  <span className="text-xs text-slate-500">
+                    {new Date(deployment.deployedAt).toLocaleString()}
+                  </span>
+                </div>
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-slate-400">No Deployments Yet</h3>
-            <p className="text-sm text-slate-500 mt-2">
-              Build a contract and deploy it to see it here
-            </p>
+
+            <div className="flex items-center gap-3">
+              {deployment.address && (
+                <button
+                  onClick={() => handleCopyAddress(deployment.address)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-700/50 rounded-lg text-xs text-slate-300 font-mono hover:bg-slate-700 transition-colors"
+                >
+                  {deployment.address.slice(0, 6)}...{deployment.address.slice(-4)}
+                  <Copy className="w-3 h-3 text-slate-400" />
+                </button>
+              )}
+              <a
+                href={`${deployment.network.explorerUrl}/tx/${deployment.transactionHash}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 text-slate-400 hover:text-primary-400 hover:bg-primary-500/10 rounded-lg transition-colors"
+                title="View on Explorer"
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
           </div>
-        )}
+        ))}
       </div>
     </div>
   );

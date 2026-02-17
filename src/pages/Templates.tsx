@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Filter, Star, Download, Shield, ArrowRight } from 'lucide-react';
+import { Search, Filter, Star, Download, Shield, ArrowRight, Sparkles } from 'lucide-react';
 import { useTemplateStore } from '../store/templateStore';
 
 const CATEGORIES = ['All', 'Token', 'NFT', 'DeFi', 'Governance', 'Utility'];
@@ -25,7 +25,7 @@ export default function Templates() {
         case 'rating':
           return b.rating - a.rating;
         case 'newest':
-          return 0; // Would sort by date if available
+          return 0;
         default:
           return b.popularity - a.popularity;
       }
@@ -34,11 +34,35 @@ export default function Templates() {
   return (
     <div className="space-y-6 animate-in">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-white">Contract Templates</h1>
-        <p className="text-slate-400 mt-1">
-          Pre-built, audited templates to jumpstart your smart contract development
-        </p>
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-white">Contract Templates</h1>
+          <p className="text-slate-400 mt-1">
+            Pre-built, audited templates to jumpstart your smart contract development
+          </p>
+        </div>
+        <span className="badge-success">
+          <Shield className="w-3 h-3" />
+          All Audited
+        </span>
+      </div>
+
+      {/* Featured Banner */}
+      <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-purple-600/15 to-primary-600/15 border border-purple-500/20 p-6">
+        <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="relative flex items-center justify-between">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <Sparkles className="w-4 h-4 text-yellow-400" />
+              <span className="text-sm font-medium text-yellow-400">Most Popular</span>
+            </div>
+            <h3 className="text-xl font-bold text-white">ERC-20 Token Template</h3>
+            <p className="text-slate-400 text-sm mt-1">Launch your own cryptocurrency in under 5 minutes</p>
+          </div>
+          <Link to="/builder/erc20-standard" className="btn-primary">
+            Use Template <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </div>
 
       {/* Filters */}
@@ -52,7 +76,7 @@ export default function Templates() {
               placeholder="Search templates..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-64 bg-slate-800 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="w-64 bg-slate-800 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40"
             />
           </div>
 
@@ -64,9 +88,9 @@ export default function Templates() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category === 'All' ? null : category)}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
                     (category === 'All' && !selectedCategory) || selectedCategory === category
-                      ? 'bg-primary-600 text-white'
+                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/25'
                       : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
                   }`}
                 >
@@ -81,7 +105,7 @@ export default function Templates() {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as 'popular' | 'rating' | 'newest')}
-          className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary-500/40"
         >
           <option value="popular">Most Popular</option>
           <option value="rating">Highest Rated</option>
@@ -90,33 +114,33 @@ export default function Templates() {
       </div>
 
       {/* Templates Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-in">
         {filteredTemplates.map((template) => (
           <div
             key={template.id}
-            className="card group hover:border-primary-500/50 transition-all duration-300"
+            className="card group hover:border-primary-500/30 transition-all duration-300"
           >
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
               <div>
                 <span
-                  className={`px-2 py-1 rounded text-xs font-medium ${
+                  className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
                     template.category === 'Token'
-                      ? 'bg-blue-500/10 text-blue-400'
+                      ? 'bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20'
                       : template.category === 'NFT'
-                      ? 'bg-purple-500/10 text-purple-400'
+                      ? 'bg-purple-500/10 text-purple-400 ring-1 ring-purple-500/20'
                       : template.category === 'DeFi'
-                      ? 'bg-green-500/10 text-green-400'
+                      ? 'bg-green-500/10 text-green-400 ring-1 ring-green-500/20'
                       : template.category === 'Governance'
-                      ? 'bg-orange-500/10 text-orange-400'
-                      : 'bg-slate-500/10 text-slate-400'
+                      ? 'bg-orange-500/10 text-orange-400 ring-1 ring-orange-500/20'
+                      : 'bg-slate-500/10 text-slate-400 ring-1 ring-slate-500/20'
                   }`}
                 >
                   {template.category}
                 </span>
               </div>
               {template.metadata.audited && (
-                <div className="flex items-center gap-1 px-2 py-1 bg-green-500/10 rounded text-xs text-green-400">
+                <div className="flex items-center gap-1 px-2 py-1 bg-green-500/10 rounded-full text-xs text-green-400 ring-1 ring-green-500/20">
                   <Shield className="w-3 h-3" />
                   Audited
                 </div>
@@ -144,7 +168,7 @@ export default function Templates() {
             </div>
 
             {/* Stats */}
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-700">
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-700/50">
               <div className="flex items-center gap-4 text-sm text-slate-400">
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 text-yellow-400" />
@@ -167,8 +191,12 @@ export default function Templates() {
       </div>
 
       {filteredTemplates.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-slate-400">No templates found matching your criteria</p>
+        <div className="text-center py-16">
+          <div className="w-16 h-16 bg-slate-700/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Search className="w-8 h-8 text-slate-600" />
+          </div>
+          <p className="text-slate-400 font-medium">No templates found</p>
+          <p className="text-sm text-slate-500 mt-1">Try adjusting your search or filters</p>
         </div>
       )}
     </div>

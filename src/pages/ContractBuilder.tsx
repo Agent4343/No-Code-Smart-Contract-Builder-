@@ -16,12 +16,14 @@ import {
   Play,
   Save,
   Download,
-  Upload,
   Trash2,
   Eye,
   Shield,
   Fuel,
   Code,
+  Blocks,
+  Sparkles,
+  ArrowRight,
 } from 'lucide-react';
 import BlockPalette from '../components/builder/BlockPalette';
 import PropertiesPanel from '../components/builder/PropertiesPanel';
@@ -61,7 +63,6 @@ export default function ContractBuilder() {
       const template = templates.find((t) => t.id === templateId);
       if (template) {
         setProjectName(template.name);
-        // Template blocks would be loaded here
       }
     }
   });
@@ -151,60 +152,65 @@ export default function ContractBuilder() {
       />
 
       {/* Main Canvas */}
-      <div className="flex-1 flex flex-col bg-slate-800/50 rounded-xl border border-slate-700 overflow-hidden">
+      <div className="flex-1 flex flex-col bg-slate-800/30 rounded-xl border border-slate-700/50 overflow-hidden">
         {/* Toolbar */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-700">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-slate-700/50 bg-slate-800/50">
           <div className="flex items-center gap-4">
-            <input
-              type="text"
-              value={projectName}
-              onChange={(e) => setProjectName(e.target.value)}
-              className="bg-transparent border-b border-slate-600 focus:border-primary-500 outline-none text-white font-semibold text-lg px-2 py-1"
-            />
-            <span className="text-slate-400 text-sm">
-              {nodes.length} blocks
+            <div className="flex items-center gap-2">
+              <Blocks className="w-4 h-4 text-primary-400" />
+              <input
+                type="text"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                className="bg-transparent border-b border-transparent focus:border-primary-500 outline-none text-white font-semibold text-base px-1 py-0.5 transition-colors"
+              />
+            </div>
+            <span className="badge-primary text-[11px]">
+              {nodes.length} {nodes.length === 1 ? 'block' : 'blocks'}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <button
               onClick={() => setShowSecurityPanel(!showSecurityPanel)}
-              className="btn-secondary"
+              className="btn-ghost py-1.5 px-2.5 text-sm"
               title="Security Scan"
             >
               <Shield className="w-4 h-4" />
             </button>
             <button
               onClick={() => setShowCodePreview(!showCodePreview)}
-              className="btn-secondary"
+              className="btn-ghost py-1.5 px-2.5 text-sm"
               title="Preview Code"
             >
               <Code className="w-4 h-4" />
             </button>
-            <button onClick={handleSave} className="btn-secondary">
-              <Save className="w-4 h-4" />
+            <div className="w-px h-5 bg-slate-700 mx-1" />
+            <button onClick={handleSave} className="btn-secondary py-1.5 px-3 text-sm">
+              <Save className="w-3.5 h-3.5" />
               Save
             </button>
-            <button onClick={handleExport} className="btn-secondary">
-              <Download className="w-4 h-4" />
+            <button onClick={handleExport} className="btn-secondary py-1.5 px-3 text-sm">
+              <Download className="w-3.5 h-3.5" />
               Export
             </button>
-            <button onClick={handleClear} className="btn-secondary text-red-400 hover:text-red-300">
-              <Trash2 className="w-4 h-4" />
+            <button onClick={handleClear} className="btn-ghost py-1.5 px-2.5 text-red-400 hover:text-red-300 hover:bg-red-500/10">
+              <Trash2 className="w-3.5 h-3.5" />
             </button>
+            <div className="w-px h-5 bg-slate-700 mx-1" />
             <button
               onClick={handleGenerate}
               disabled={nodes.length === 0 || isGenerating}
-              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-primary py-1.5 px-4 text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
             >
               {isGenerating ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   Generating...
                 </>
               ) : (
                 <>
-                  <Play className="w-4 h-4" />
+                  <Play className="w-3.5 h-3.5" />
                   Generate
                 </>
               )}
@@ -213,7 +219,7 @@ export default function ContractBuilder() {
         </div>
 
         {/* Flow Canvas */}
-        <div className="flex-1">
+        <div className="flex-1 relative">
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -225,10 +231,10 @@ export default function ContractBuilder() {
             fitView
             className="bg-slate-900"
           >
-            <Background color="#334155" gap={20} />
-            <Controls className="!bg-slate-800 !border-slate-700 !shadow-xl" />
+            <Background color="#1e293b" gap={20} size={1} />
+            <Controls className="!bg-slate-800 !border-slate-700 !shadow-xl !rounded-lg" />
             <MiniMap
-              className="!bg-slate-800 !border-slate-700"
+              className="!bg-slate-800 !border-slate-700 !rounded-lg"
               nodeColor="#0ea5e9"
               maskColor="rgba(15, 23, 42, 0.8)"
             />
@@ -236,16 +242,20 @@ export default function ContractBuilder() {
 
           {nodes.length === 0 && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Upload className="w-10 h-10 text-slate-500" />
+              <div className="text-center max-w-sm">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary-500/10 to-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5 border border-primary-500/20">
+                  <Sparkles className="w-9 h-9 text-primary-400 float" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-400">
-                  Drag blocks here to start building
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  Start Building Your Contract
                 </h3>
-                <p className="text-slate-500 mt-2">
-                  Select blocks from the palette on the left
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Click blocks from the palette on the left to add them to the canvas. Connect blocks to define your contract's logic.
                 </p>
+                <div className="flex items-center justify-center gap-2 mt-5 text-primary-400 text-sm font-medium">
+                  <ArrowRight className="w-4 h-4 rotate-180" />
+                  Select blocks from the palette
+                </div>
               </div>
             </div>
           )}
@@ -253,29 +263,30 @@ export default function ContractBuilder() {
 
         {/* Gas Estimate Bar */}
         {nodes.length > 0 && (
-          <div className="p-3 border-t border-slate-700 flex items-center justify-between bg-slate-800/80">
-            <div className="flex items-center gap-4">
+          <div className="px-4 py-2.5 border-t border-slate-700/50 flex items-center justify-between bg-slate-800/60">
+            <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <Fuel className="w-4 h-4 text-orange-400" />
-                <span className="text-sm text-slate-400">Est. Deployment Gas:</span>
-                <span className="text-sm font-medium text-white">
-                  ~{(nodes.length * 500000).toLocaleString()} units
+                <span className="text-xs text-slate-500">Est. Gas:</span>
+                <span className="text-xs font-medium text-white font-mono">
+                  {(nodes.length * 500000).toLocaleString()}
                 </span>
               </div>
-              <div className="text-sm text-slate-400">
-                ~${((nodes.length * 500000 * 30) / 1e9 * 2500).toFixed(2)} @ 30 gwei
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-slate-500">Cost:</span>
+                <span className="text-xs font-medium text-white font-mono">
+                  ~${((nodes.length * 500000 * 30) / 1e9 * 2500).toFixed(2)}
+                </span>
+                <span className="text-[10px] text-slate-600">@ 30 gwei</span>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Eye className="w-4 h-4 text-slate-400" />
-              <span className="text-sm text-slate-400">Preview:</span>
-              <button
-                onClick={() => setShowCodePreview(true)}
-                className="text-sm text-primary-400 hover:text-primary-300"
-              >
-                View Solidity Code
-              </button>
-            </div>
+            <button
+              onClick={() => setShowCodePreview(true)}
+              className="flex items-center gap-1.5 text-xs text-primary-400 hover:text-primary-300 font-medium transition-colors"
+            >
+              <Eye className="w-3.5 h-3.5" />
+              Preview Solidity
+            </button>
           </div>
         )}
       </div>
