@@ -5,7 +5,6 @@ import {
   CheckCircle,
   Clock,
   XCircle,
-  ArrowRight,
   Shield,
   Copy,
 } from 'lucide-react';
